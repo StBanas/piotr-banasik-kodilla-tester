@@ -1,6 +1,12 @@
 public class FirstClass {
     public static void main(String[] args) {
 
+        int year =  2040;
+        LeapYear leapYear = new LeapYear(year);
+        System.out.println("Rok "+ year +  " jest rokiem przestępnym : " + leapYear.checkYear());
+        System.out.println("..........................................................................");
+        System.out.println("..........................................................................");
+
         Notebook notebook = new Notebook(600, "notebook", 1000);
         System.out.println("To jest " + notebook.rename + " ważący " + notebook.weight + " gramów o wartości " + notebook.price + " jednostek monetarnych.");
         notebook.checkPrice();
@@ -45,5 +51,7 @@ public class FirstClass {
 
 
     }
+
+
 
 }

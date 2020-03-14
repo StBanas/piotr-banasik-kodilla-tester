@@ -32,5 +32,4 @@ public class Notebook {
             System.out.println("This " + this.rename + " is very heavy.");
 
     }
-
 }
