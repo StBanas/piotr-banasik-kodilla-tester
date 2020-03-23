@@ -6,15 +6,18 @@ public abstract class Linux extends OperatingSystem {
         super(editionYear);
         System.out.println("Linux constructor");
     }
-    public void turnOn(){
+    public void turnOn()
+    {
         System.out.println("System turned on");
     }
 
-    public void turnOff(){
+    public void turnOff()
+    {
         System.out.println("System turned off");
     }
-
+    @Override
     public int getEditionYear(int editionYear) {
         return editionYear;
     }
+
 }
