@@ -1,6 +1,6 @@
 package com.kodilla.inheritance.homework;
 
-public class Linux extends OperatingSystem {
+public abstract class Linux extends OperatingSystem {
 
     public Linux(int editionYear) {
         super(editionYear);

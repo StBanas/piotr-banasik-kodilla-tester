@@ -1,6 +1,6 @@
 package com.kodilla.inheritance.homework;
 
-public class Windows extends OperatingSystem {
+public abstract class Windows extends OperatingSystem {
     private int editionYear;
 
     public Windows(int editionYear) {
@@ -23,8 +23,8 @@ public class Windows extends OperatingSystem {
     /*
     Metoda " getEditionYear nie zwraca mi wartości - nie mogę tego rozwiązać !!!
      */
-//    @Override
-//    public int getEditionYear(int editionYear) {
-//        return editionYear;
-//    }
+    @Override
+    public int getEditionYear(int editionYear) {
+        return editionYear;
+    }
 }
