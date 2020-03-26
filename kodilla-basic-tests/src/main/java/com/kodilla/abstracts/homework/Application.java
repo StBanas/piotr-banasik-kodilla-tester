@@ -4,6 +4,8 @@ public class Application {
 
     public static void main(String[] args) {
 
+
+
         Square square = new Square(1,1);
         System.out.println(square.perimiter());
         System.out.println(square.area());

@@ -3,62 +3,21 @@ package com.kodilla.abstracts.homework;
 public class Job_at_Work {
     public static void main(String[] args) {
 
-        Job coding = new Job(6800, "writing codes, foults fixing") {
-            @Override
-            public int age() {
-                return 0;
-            }
+        Manager manager = new Manager( 56000, "zarządzanie");
+        Tester tester = new Tester(45000, "testowanie");
+        Developer developer = new Developer( 56000, "programowanie");
 
-            @Override
-            public String firstName() {
-                return null;
-            }
+        Person smith = new Person("John", tester, 34);
+        Person taylor = new Person("Frank", manager, 67);
+        Person munro = new Person("Duncan", developer, 46);
 
-            @Override
-            public String job() {
-                return null;
-            }
-        };
-        System.out.println(coding.getSalary());
-        System.out.println(coding.getResponsibilities());
-
-        Job managing = new Job(12000, "Cost controling, eveluation of resources required, deploying works to be done.") {
-            @Override
-            public int age() {
-                return 0;
-            }
-
-            @Override
-            public String firstName() {
-                return null;
-            }
-
-            @Override
-            public String job() {
-                return null;
-            }
-        };
-        System.out.println(managing.getSalary());
-        System.out.println(managing.getResponsibilities());
-
-        Job testing = new Job(8000, "code testing, foults reporting") {
-            @Override
-            public int age() {
-                return 0;
-            }
-
-            @Override
-            public String firstName() {
-                return null;
-            }
-
-            @Override
-            public String job() {
-                return null;
-            }
-        };
-        System.out.println(testing.getSalary());
-        System.out.println(testing.getResponsibilities());
+        System.out.println( "Tester John  ma " + smith.getAge() +" lata.");
+        System.out.print("Manager ma na imię " +  taylor.getfirstName() + ".");
+        System.out.println("Jego obowiązkiem jest " + manager.getResponsibilities() + ".");
+        System.out.print("Developer ma " + munro.getAge() + "lat. " );
+        System.out.println("Jego zarobki to: " + munro.job.getSalary()+ " US$.");
+        System.out.println("Natomiast do  Johna Smith'a obowiązków należy " + smith.job.getResponsibilities()+ ".");
+        /* A co, jeśli chciałbym, żeby "munro.getSalary()" dawało mi bezpośrednio wynik? */
 
     }
 }
