@@ -1,28 +1,23 @@
 package com.kodilla.abstracts.homework;
 
+import static java.lang.StrictMath.sqrt;
+
 public class Triangle extends Shape {
 
-    public Triangle(int dimension1, int dimension2)
+    public Triangle(int dimension1, int dimension2) // right-angle triangle
     {
-        super(5, 4);
+        super(3, 4);
     }
 
     @Override
     public int area() {
-        int area = (getDimension1()/2 * getDimension2());
+        int area = (getDimension2()/2 * getDimension1());
         return area;
     }
     @Override
-    public int perimiter() {
-        if (getDimension1() > getDimension2())
-        {
-            int perimiter = 3 * getDimension1();
-            return perimiter;
-        }
-       else {
-            int perimiter = 3 * getDimension2();
-            return perimiter;
-        }
+    public int perimiter()
+    {
+            return (int) sqrt(((getDimension1() * getDimension1()) + (getDimension2() * getDimension2()))) + getDimension1() + getDimension2();
     }
 
 

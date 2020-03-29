@@ -8,16 +8,16 @@ public class Square extends Shape{
     }
 
     @Override
-    public int area() {
+    public int area()
+    {
         int area = (getDimension1() * getDimension2());
             return area;
-        }
-    @Override
-    public int perimiter()  {
-        int perimiter = 4 * getDimension1();
-            return perimiter;
-
     }
 
-
+    @Override
+    public int perimiter()
+    {
+        int perimiter = 4 * getDimension1();
+            return perimiter;
+    }
 }

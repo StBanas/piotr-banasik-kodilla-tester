@@ -8,7 +8,7 @@ public class Rectangle extends Shape {
     }
     @Override
     public int area() {
-        int area = (getDimension1() * getDimension1());
+        int area = (getDimension1() * getDimension2());  // wiem, że area jest nadmiarowa etc... w innych figurach to samo
         return area;
     }
     @Override
