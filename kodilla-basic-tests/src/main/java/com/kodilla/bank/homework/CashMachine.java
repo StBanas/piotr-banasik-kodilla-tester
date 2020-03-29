@@ -24,6 +24,7 @@ public class CashMachine
         newTab[this.operations - 1] = amount;
         this.balance = newTab;
     }
+
     public void substract(double amount) {
         this.operations++;
         double[] newTab = new double[this.operations];
@@ -31,15 +32,8 @@ public class CashMachine
         newTab[this.operations - 1] = amount;
         this.balance = newTab;
     }
-        public double[] getBalance()
-        {
-            double balance = 0;
-            for(int i = 0; i < this.balance.length; i++) {
-                balance += this.balance[i];
-            }
-            return this.balance; /*  moim zdaniem tu powinno być jednak samo "balance ???
-                                    i co to są te podkreslniki "underline" pod total i balance??*/
-        }
+
+
 
     public double getAverage()
     {
@@ -52,11 +46,30 @@ public class CashMachine
         }
         return total/this.balance.length;
     }
-    public int getOperationsIn() {return operationsIn; }
+
+    public double[] getBalance(){
+        double [] stan = balance;
+        return  balance;
+    }
+//        {
+//            double[] balanceTotal = 0;
+//            for(int i = 0; i < this.balance.length; i++) {
+//                balanceTotal += this.balance[i];
+//
+//            }
+//            return balanceTotal; /*  moim zdaniem tu powinno być jednak samo "balance ???
+//                                i co to są te podkreslniki "underline" pod total i balance??*/
+//        }
+    public int getOperationsIn()
+    {
+        return operationsIn;
+    }
+
     public int getOperationsOut()
     {
         return operationsOut;
     }
+
     public int getOperations()
     {
         return operations;

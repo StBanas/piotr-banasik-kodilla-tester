@@ -4,8 +4,8 @@ public class Bank {
     private String name;
     private CashMachine depositIn;
     private CashMachine operations;
-    private CashMachine operationsIn;
-    private CashMachine operationsOut;
+//    private CashMachine operationsIn;
+//    private CashMachine operationsOut;
 
 //    private CashMachine withdrawal;
 
@@ -13,8 +13,8 @@ public class Bank {
         this.name = name;
         this.depositIn = new CashMachine();
         this.operations = new CashMachine();
-        this.operationsIn = new CashMachine();
-        this.operationsOut = new CashMachine();
+//        this.operationsIn = new CashMachine();
+//        this.operationsOut = new CashMachine();
 
 //        this.withdrawal = new CashMachine();
     }
@@ -31,30 +31,21 @@ public class Bank {
         }
     }
 
-        public int getBankOperationsIn ()
-        {
-            return this.operationsIn.getOperationsIn();
-        }
+    public int getBankOperations ()
+    {
+        return this.operations.getOperations();
+    }
 
-        public int getBankOperationsOut ()
-        {
-            return this.operationsOut.getOperationsOut();
-        }
+    public double getBankBalance ()
+    {
 
-        public int getBankOperations ()
-        {
-            return this.operations.getOperations();
-        }
+        return this.depositIn.getAverage(); // tu jest  lekka ściema - zamiast getAverage powinno byc getBalance
+    }                                       // ale z getBalance nie działa - bo chce doubla [] zamiast doubla
 
-        public CashMachine getBalans ()
-        {
-            return depositIn;
-        }
-
-        public double getBankAverage ()
-        {
-            return this.depositIn.getAverage();
-        }
+    public double getBankAverage ()
+    {
+        return depositIn.getAverage();
+    }
 }
 
 

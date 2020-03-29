@@ -58,7 +58,9 @@ public class CashMachineTestSuit {
         machine1.add(100);
         machine1.add(-100);
 
-        assertEquals(3, machine1.getOperations(), 0.0001);
+        int operations = machine1.getOperations(); // działa tak samo w linii 63 z
+
+        assertEquals(3, operations, 0.0001);
         assertEquals(2, machine1.getOperationsIn(), 0.0001);
         assertEquals(1, machine1.getOperationsOut(), 0.0001);
     }
