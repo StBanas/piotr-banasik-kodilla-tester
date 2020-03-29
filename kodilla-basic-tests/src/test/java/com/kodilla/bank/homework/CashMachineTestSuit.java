@@ -8,8 +8,8 @@ public class CashMachineTestSuit {
     @Test
     public void shouldHaveZeroLength() {
         CashMachine machine1 = new CashMachine();
-        double [] balance = machine1.getBalance();
-        assertEquals(0, balance.length);
+        double trs = machine1.getOperations();
+        assertEquals(0, trs);
     }
 
     @Test
@@ -24,17 +24,6 @@ public class CashMachineTestSuit {
         machine2.add(120.00);
         machine2.add(80.00);
         machine2.add(20.00);
-
-        double[] balance1 = machine1.getBalance();
-        assertEquals(3, balance1.length);
-        assertEquals(440.3, balance1[0]);
-        assertEquals(1222.50, balance1[1]);
-        assertEquals(1.50, balance1[2]);
-
-        double[] balance2 = machine2.getBalance();
-        assertEquals(4, balance2.length);
-        assertEquals(120.00, balance2[1]);
-        assertEquals(20.00, balance2[3]);
     }
 
     @Test
@@ -58,7 +47,7 @@ public class CashMachineTestSuit {
         machine1.add(100);
         machine1.add(-100);
 
-        int operations = machine1.getOperations(); // działa tak samo w linii 63 z
+        int operations = machine1.getOperations(); // działa tak samo jak "machine1.getOperations()" w linii 52
 
         assertEquals(3, operations, 0.0001);
         assertEquals(2, machine1.getOperationsIn(), 0.0001);
@@ -71,7 +60,34 @@ public class CashMachineTestSuit {
         machine1.add(100.00);
         machine1.add(-100.00);
 
-        assertEquals(2, machine1.getOperationsIn(), 0.0001);
-        assertEquals(1, machine1.getOperationsOut(), 0.0001);
+        assertEquals(100, machine1.getBalance(), 0.0001);
+        machine1.add(-20.00);
+        assertEquals(80, machine1.getBalance(), 0.0001);
+    }
+    @Test
+    public void cashInSaldo() {
+        CashMachine machine1 = new CashMachine();
+        machine1.add(200.00);
+        machine1.add(1300.00);
+        machine1.add(-850.00);
+
+        assertEquals(1500, machine1.getCashIn(), 0.0001);
+        machine1.add(10.00);
+        assertEquals(1510, machine1.getCashIn(), 0.0001);
+        machine1.add(-10.00);
+        assertEquals(1510, machine1.getCashIn(), 0.0001);
+    }
+    @Test
+    public void cashOutSaldo() {
+        CashMachine machine1 = new CashMachine();
+        machine1.add(200.00);
+        machine1.add(1300.00);
+        machine1.add(-850.00);
+
+        assertEquals(-850, machine1.getCashOut(), 0.0001);
+        machine1.add(10.00);
+        assertEquals(-850, machine1.getCashOut(), 0.0001);
+        machine1.add(-10.00);
+        assertEquals(-860, machine1.getCashOut(), 0.0001);
     }
 }

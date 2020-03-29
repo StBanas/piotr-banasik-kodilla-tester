@@ -2,65 +2,74 @@ package com.kodilla.bank.homework;
 
 public class CashMachine
     {
-    private double[] balance;
+    private double[] transaction;
+    private double balance;
     private int operationsIn;
     private int operationsOut;
     private int operations;
-
         public CashMachine()
         {
             this.operations = 0;
             this.operationsIn = 0;
             this.operationsOut = 0;
-            this.balance = new double[0];
+            this.balance = 0;
+            this.transaction = new double[0];
         }
-
     public void add(double amount) {
         this.operations++;
         if (amount > 0 ){ this.operationsIn++; }
         else { this.operationsOut++; }
-        double[] newTab = new double[this.operations];
-        System.arraycopy(balance, 0, newTab, 0, balance.length);
+        double [] newTab = new double[this.operations];
+        System.arraycopy(transaction, 0, newTab, 0, transaction.length);
         newTab[this.operations - 1] = amount;
-        this.balance = newTab;
+        this.transaction = newTab;
     }
-
     public void substract(double amount) {
         this.operations++;
         double[] newTab = new double[this.operations];
-        System.arraycopy(balance, 0, newTab, 0, balance.length);
+        System.arraycopy(transaction, 0, newTab, 0, transaction.length);
         newTab[this.operations - 1] = amount;
-        this.balance = newTab;
+        this.transaction= newTab;
     }
-
-
-
     public double getAverage()
     {
-        if (this.balance.length == 0) {
+        if (this.transaction.length == 0) {
             return 0;
         }
         double total = 0;
-        for(int i = 0; i < this.balance.length; i++) {
-            total += this.balance[i];
+        for(int i = 0; i < this.transaction.length; i++) {
+            total += this.transaction[i];
         }
-        return total/this.balance.length;
+        return total/this.transaction.length;
+    }
+    public double getBalance(){
+        double saldo = 0;
+        for(int i = 0; i < this.transaction.length; i++)
+            saldo += this.transaction[i];
+        return  saldo;
     }
 
-    public double[] getBalance(){
-        double [] stan = balance;
-        return  balance;
+    public int getTransactionLength(){
+            return transaction.length;
     }
-//        {
-//            double[] balanceTotal = 0;
-//            for(int i = 0; i < this.balance.length; i++) {
-//                balanceTotal += this.balance[i];
-//
-//            }
-//            return balanceTotal; /*  moim zdaniem tu powinno być jednak samo "balance ???
-//                                i co to są te podkreslniki "underline" pod total i balance??*/
-//        }
-    public int getOperationsIn()
+
+    public double getCashIn ()
+    {
+         double saldoCashIn = 0;
+         for(int i = 0; i < this.transaction.length; i++) {
+             if (this.transaction[i] >= 0) {
+                 saldoCashIn += this.transaction[i];
+             }
+         }
+             return saldoCashIn;
+    }
+        public double getCashOut ()
+        {
+            return getBalance() - getCashIn();
+        }
+
+
+        public int getOperationsIn()
     {
         return operationsIn;
     }

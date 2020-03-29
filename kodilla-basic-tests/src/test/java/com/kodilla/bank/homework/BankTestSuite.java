@@ -34,8 +34,8 @@ public class BankTestSuite {
         bank.cashIn(-100.00);
 
         assertEquals(4, bank.getBankOperations(), (int) 0.0001); /* nie zwraca mi ilosci operacji*/
-//        assertEquals(3, bank.getBankOperationsIn(), 0.0001);
-//        assertEquals(1, bank.getBankOperationsOut(), 0.0001);
+        assertEquals(3, bank.getBankOperationsIn(), (int) 0.0001);
+        assertEquals(1, bank.getBankOperationsOut(), (int) 0.0001);
     }
 
     @Test
@@ -47,8 +47,8 @@ public class BankTestSuite {
         bank.cashIn(-100.00);
 
         assertEquals(220.00, bank.getBankBalance(),0.0001); /* nie zwraca mi stanu konta*/
-//        assertEquals(3, bank.getBankOperationsIn(), 0.0001);
-//        assertEquals(1, bank.getBankOperationsOut(), 0.0001);
+        assertEquals(3, bank.getBankOperationsIn(), (int) 0.0001);
+        assertEquals(1, bank.getBankOperationsOut(), (int) 0.0001);
     }
 
     private void assertEquals(double v, double bankBalanceAll, double v1) {  // ten test wygenerowal sie auto
