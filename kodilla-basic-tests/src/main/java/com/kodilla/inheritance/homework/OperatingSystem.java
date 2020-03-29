@@ -8,15 +8,9 @@ public abstract class OperatingSystem {
             {
                 this.editionYear = editionYear;
             }
-    public void turnOn()
-    {
-        System.out.println("System turned on");
-    }
+    public abstract void turnOn();
 
-    public void turnOff()
-    {
-        System.out.println("System turned off");
-    }
+    public abstract void turnOff();
 
     public int getEditionYear()
     {

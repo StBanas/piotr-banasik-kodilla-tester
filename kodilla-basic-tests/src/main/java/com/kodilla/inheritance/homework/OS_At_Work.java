@@ -10,8 +10,8 @@ public class OS_At_Work {
         windows.turnOn();
         ubuntu.turnOff();
 
-        System.out.println("Rok edycji Linuxa:  " +  ubuntu.getEditionYear());
-        System.out.println("Rok edycji Windowsa:  " +  windows.getEditionYear());
+//        System.out.println("Rok edycji Linuxa:  " +  ubuntu.getEditionYear());
+//        System.out.println("Rok edycji Windowsa:  " +  windows.getEditionYear());
 
 //        windows.turnOff();
 //        ubuntu.turnOn();
