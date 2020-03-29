@@ -4,28 +4,21 @@ public class OS_At_Work {
 
     public static void main(String[] args) {
 
-//        System.out.println(windows0.getEditionYear());
+        Windows windows = new Windows(1985);
+        Linux ubuntu = new Linux(2001);
 
-        Windows windows0 = new Windows(1985) {
-            @Override
-            public void getEditionYear() {
-
-            }
-        };
-        windows0.turnOn();
-
-        /* Nie działa getEditionYear !!! */
-
-
-        Linux ubuntu = new Linux(2001) {
-
-            @Override
-            public void getEditionYear() {
-
-            }
-        };
+        windows.turnOn();
         ubuntu.turnOff();
-        ubuntu.getEditionYear();
-     }
+
+        System.out.println("Rok edycji Linuxa:  " +  ubuntu.getEditionYear());
+        System.out.println("Rok edycji Windowsa:  " +  windows.getEditionYear());
+
+//        windows.turnOff();
+//        ubuntu.turnOn();
+//
+//        System.out.println("Rok edycji Linuxa:  " +  ubuntu.getEditionYear());
+//        System.out.println("Rok edycji Winowsa:  " +  windows.getEditionYear());
+
+    }
 
 }

@@ -1,30 +1,23 @@
 package com.kodilla.inheritance.homework;
 
-public abstract class Windows extends OperatingSystem {
-    private int editionYear;
+public class Windows extends OperatingSystem {
 
-    public Windows(int editionYear) {
-//        {this.editionYear = editionYear;}
+    public Windows(int editionYear)
+    {
         super(editionYear);
         System.out.println("Windows constructor");
     }
 
-    public void turnOn(){
-        System.out.println("System turned on");
-    }
-
-    public void turnOff(){
-        System.out.println("System turned off");
-    }
-
-    public void displayEditionYear() {
-        System.out.println("Edition year :  ");
-    }
-    /*
-    Metoda " getEditionYear nie zwraca mi wartości - nie mogę tego rozwiązać !!!
-     */
     @Override
-    public int getEditionYear(int editionYear) {
-        return editionYear;
+    public void turnOn()
+    {
+        System.out.println("Windows turned on . Rok wydania to :  " + getEditionYear());
     }
+
+    @Override
+    public void turnOff()
+    {
+        System.out.println("Windows turned off . Rok wydania to:  " + getEditionYear());
+    }
+
 }
