@@ -71,17 +71,26 @@ public class CashMachine
 
         public int getOperationsIn()
     {
-        return operationsIn;
+        return this.operationsIn;
     }
 
     public int getOperationsOut()
     {
-        return operationsOut;
+        return this.operationsOut;
     }
 
     public int getOperations()
     {
         return operations;
+    }
+    public double getAverageIn()
+    {
+        return getCashIn()/getOperationsIn();
+    }
+
+    public double getAverageOut()
+    {
+        return getCashOut()/getOperationsOut();
     }
 
 }

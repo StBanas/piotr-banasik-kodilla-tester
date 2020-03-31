@@ -1,6 +1,5 @@
 package com.kodilla.bank.homework;
 
-//import com.kodilla.school.Student;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -20,8 +19,6 @@ public class BankTestSuite {
         bank.cashIn(100.00);
         bank.cashIn(-20.00);
 
-//        double bankAverage = bank.getBankAverage();
-
         assertEquals(40, bank.getBankAverage(), 0.0001);
     }
 
@@ -33,7 +30,7 @@ public class BankTestSuite {
         bank.cashIn(200.00);
         bank.cashIn(-100.00);
 
-        assertEquals(4, bank.getBankOperations(), (int) 0.0001); /* nie zwraca mi ilosci operacji*/
+        assertEquals(4, bank.getBankOperations(), (int) 0.0001);
         assertEquals(3, bank.getBankOperationsIn(), (int) 0.0001);
         assertEquals(1, bank.getBankOperationsOut(), (int) 0.0001);
     }
@@ -46,11 +43,13 @@ public class BankTestSuite {
         bank.cashIn(200.00);
         bank.cashIn(-100.00);
 
-        assertEquals(220.00, bank.getBankBalance(),0.0001); /* nie zwraca mi stanu konta*/
-        assertEquals(3, bank.getBankOperationsIn(), (int) 0.0001);
-        assertEquals(1, bank.getBankOperationsOut(), (int) 0.0001);
+        assertEquals(220.00, bank.getBankBalance(),0.0001);
+        assertEquals((int) 3, bank.getBankOperationsIn(), (int) 0.0001); // tu rzutowałem  arg  na (int)
+        assertEquals((int) 1, bank.getBankOperationsOut(), (int) 0.0001); // tu rzutowałem  arg  na (int)
     }
 
-    private void assertEquals(double v, double bankBalanceAll, double v1) {  // ten test wygenerowal sie auto
+    private void assertEquals(double v, double bankBalanceAll, double v1) {
+        // ten test wygenerowal sie automatycznie - w tym ciele nic nie jest wymagane, jednakże po usunięciu
+        // tej metody generuje sie wyjątek -
     }
 }

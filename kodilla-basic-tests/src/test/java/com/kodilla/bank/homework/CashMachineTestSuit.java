@@ -90,4 +90,31 @@ public class CashMachineTestSuit {
         machine1.add(-10.00);
         assertEquals(-860, machine1.getCashOut(), 0.0001);
     }
+    @Test
+    public void averageCashIn() {
+        CashMachine machine1 = new CashMachine();
+        machine1.add(100.00);
+        machine1.add(100.00);
+        machine1.add(400.00);
+        machine1.add(-100.00);
+        machine1.add(-120.00);
+        machine1.add(-200.00);
+
+        assertEquals(200, machine1.getAverageIn(), 0.0001);
+        machine1.add(-220.00);
+        assertEquals(200, machine1.getAverageIn(), 0.0001);
+    }
+    public void averageCashOut() {
+        CashMachine machine1 = new CashMachine();
+        machine1.add(100.00);
+        machine1.add(100.00);
+        machine1.add(400.00);
+        machine1.add(-100.00);
+        machine1.add(-120.00);
+        machine1.add(-200.00);
+
+        assertEquals(-140, machine1.getAverageOut(), 0.0001);
+        machine1.add(-300.00);
+        assertEquals(240, machine1.getAverageOut(), 0.0001);
+    }
 }
