@@ -1,18 +1,21 @@
 package com.kodilla.bank.homework;
 
+import java.util.Arrays;
+
 public class CashMachine
     {
+    private  String name;
     private double[] transaction;
-    private double balance;
     private int operationsIn;
     private int operationsOut;
     private int operations;
+
         public CashMachine()
         {
+            this.name = name;
             this.operations = 0;
             this.operationsIn = 0;
             this.operationsOut = 0;
-            this.balance = 0;
             this.transaction = new double[0];
         }
     public void add(double amount) {
@@ -24,13 +27,20 @@ public class CashMachine
         newTab[this.operations - 1] = amount;
         this.transaction = newTab;
     }
+
     public void substract(double amount) {
         this.operations++;
         double[] newTab = new double[this.operations];
         System.arraycopy(transaction, 0, newTab, 0, transaction.length);
         newTab[this.operations - 1] = amount;
-        this.transaction= newTab;
+        this.transaction = newTab;
     }
+
+    public double[] getTransaction()
+    {
+        return transaction;
+    }
+
     public double getAverage()
     {
         if (this.transaction.length == 0) {
@@ -42,11 +52,12 @@ public class CashMachine
         }
         return total/this.transaction.length;
     }
+
     public double getBalance(){
         double saldo = 0;
         for(int i = 0; i < this.transaction.length; i++)
             saldo += this.transaction[i];
-        return  saldo;
+        return saldo;
     }
 
     public int getTransactionLength(){
@@ -63,13 +74,12 @@ public class CashMachine
          }
              return saldoCashIn;
     }
-        public double getCashOut ()
+    public double getCashOut ()
         {
             return getBalance() - getCashIn();
         }
 
-
-        public int getOperationsIn()
+    public int getOperationsIn()
     {
         return this.operationsIn;
     }
@@ -83,15 +93,14 @@ public class CashMachine
     {
         return operations;
     }
+
     public double getAverageIn()
     {
         return getCashIn()/getOperationsIn();
     }
 
-    public double getAverageOut()
-    {
-        return getCashOut()/getOperationsOut();
-    }
+    public double getAverageOut() { return getCashOut()/getOperationsOut(); }
+
 
 }
 

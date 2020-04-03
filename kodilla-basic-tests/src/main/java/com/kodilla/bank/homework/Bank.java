@@ -1,38 +1,25 @@
 package com.kodilla.bank.homework;
 
 public class Bank {
+    private CashMachine[] machines;
     private String name;
-    private CashMachine depositIn;
     private CashMachine operations;
     private CashMachine operationsIn;
     private CashMachine operationsOut;
+    private CashMachine transaction;
 
-    public Bank(String name) {
+    public Bank(String name, CashMachine[] machines) {
         this.name = name;
-        this.depositIn = new CashMachine();
+        this.machines = machines;
         this.operations = new CashMachine();
         this.operationsIn = new CashMachine();
         this.operationsOut = new CashMachine();
+        this.transaction = new CashMachine();
     }
 
-    public double cashIn(double amount)
-        {
-        if (amount > 0)
-        {
-            this.depositIn.add(amount);
-            return amount;
-        }
-
-        else
-        {
-            this.depositIn.substract(amount);
-            return amount;
-        }
-    }
-
-    public int getBankOperations ()
+    public CashMachine getBankOperations ()
     {
-        return this.operations.getOperations();
+        return this.operations;
     }
 
     public int getBankOperationsIn ()
@@ -47,13 +34,15 @@ public class Bank {
 
     public double getBankBalance ()
     {
-        return this.depositIn.getBalance();
+        return this.transaction.getBalance();
     }
 
     public double getBankAverage()
     {
-        return this.depositIn.getAverage();
+        return this.operations.getAverage();
     }
+
+
 }
 
 
