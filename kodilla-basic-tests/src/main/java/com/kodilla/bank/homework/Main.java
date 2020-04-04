@@ -68,10 +68,22 @@ public class Main {
 
             m1.add(500.0);
             m1.add(700.0);
+            m1.add(-450);
+
 
             double balance = m1.getBalance();
+//            double transaction = m1.getTransaction();
+            double operation = m1.getOperations();
+            double op = m1.getBalance();
+            double[] opout = m1.getTransaction();
 
+
+            System.out.println(operation);
+            System.out.println(op);
+            System.out.println(Arrays.toString(opout));
             System.out.println(balance);
 
-    }
+
+        }
+
 }
