@@ -16,7 +16,7 @@ public class CashMachineTestSuit {
         double[] transaction = cm1.getTransaction();
         cm1.add(0);
         cm1.add(20);
-        assertEquals(0, transaction.length);
+        assertEquals(2, cm1.getTransactionLength());
     }
 
     @Test

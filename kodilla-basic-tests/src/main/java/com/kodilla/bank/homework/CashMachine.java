@@ -82,7 +82,7 @@ public class CashMachine
         }
 
     public int getTransactionLength(){
-            return transaction.length;
+            return this.transaction.length;
         }
 
 //    public double getCashOut ()
@@ -102,7 +102,7 @@ public class CashMachine
 
     public int getOperations()
     {
-        return operations;
+        return this.operations;
     }
 
     public double getAverageIn()
