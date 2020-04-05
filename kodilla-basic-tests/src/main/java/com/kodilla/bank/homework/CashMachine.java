@@ -60,10 +60,6 @@ public class CashMachine
         return saldo;
     }
 
-    public int getTransactionLength(){
-            return transaction.length;
-    }
-
     public double getCashIn ()
     {
          double saldoCashIn = 0;
@@ -74,10 +70,25 @@ public class CashMachine
          }
              return saldoCashIn;
     }
-    public double getCashOut ()
+        public double getCashOut ()
         {
-            return getBalance() - getCashIn();
+            double saldoCashIn = 0;
+            for(int i = 0; i < this.transaction.length; i++) {
+                if (this.transaction[i] < 0) {
+                    saldoCashIn += this.transaction[i];
+                }
+            }
+            return saldoCashIn;
         }
+
+    public int getTransactionLength(){
+            return transaction.length;
+        }
+
+//    public double getCashOut ()
+//        {
+//            return getBalance() - getCashIn();
+//        }
 
     public int getOperationsIn()
     {
