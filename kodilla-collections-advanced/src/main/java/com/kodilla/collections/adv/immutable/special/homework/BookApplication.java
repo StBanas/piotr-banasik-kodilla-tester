@@ -6,8 +6,7 @@ import java.util.List;
 public class BookApplication {
     public static void main(String[] args) {
 
-        List<Book> books = new ArrayList<>();
-
+        List<BookManager> books = new ArrayList<>();
 
         BookManager book1 = new BookManager (" Przeprawa ", " Cormac MacCarthy");
 
@@ -16,12 +15,12 @@ public class BookApplication {
         System.out.println(book1);
 
         BookManager book2 = new BookManager ("  Droga ", " Cormac MacCarthy");
-        book2.createBook("  Droga ", " Cormac MacCarthy");
+//        book2.createBook("  Droga ", " Cormac MacCarthy");
         books.add(book2);
         System.out.println(book2);
 
         BookManager book3 = new BookManager (" Krwawy Południk ", " Cormac MacCarthy");
-        book3.createBook(" Krwawy Południk ", " Cormac MacCarthy");
+//        book3.createBook(" Krwawy Południk ", " Cormac MacCarthy");
         books.add(book3);
         System.out.println(book3);
 
@@ -31,7 +30,6 @@ public class BookApplication {
         System.out.println(book11);
 
         System.out.println(books.size());
-
 
 //        Book book4 = new BookManager(" Sutree ", " Cormac MacCarthy");
 //        Book book5 = new BookManager(" Dziecię Boże ", " Cormac MacCarthy");
@@ -46,14 +44,5 @@ public class BookApplication {
 
         System.out.println(book3.equals(book11));
         System.out.println (book3 == book11);
-
-//        System.out.println(book4);
-//        System.out.println(book5);
-//        System.out.println(book6);
-//        System.out.println(book7);
-//        System.out.println(book8);
-//        System.out.println(book9);
-//        System.out.println(book10);
-
     }
 }
