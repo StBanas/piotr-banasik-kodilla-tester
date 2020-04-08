@@ -1,6 +1,6 @@
 package com.kodilla.collections.adv.immutable.homework;
 
-public final class Task {
+public final class Task {                         // zmiana - wprowadzenie zabezpieczenia "final"
     protected final String title;
     protected final int duration;
 
