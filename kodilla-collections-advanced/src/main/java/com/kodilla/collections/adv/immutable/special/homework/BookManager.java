@@ -1,41 +1,26 @@
 package com.kodilla.collections.adv.immutable.special.homework;
 
-public class BookManager {
-    private String title;
-    private String author;
+import java.util.ArrayList;
+import java.util.List;
+
+public class BookManager extends Book {
+
+    List<Book> books = new ArrayList<>();
 
     public BookManager(String title, String author) {
-        this.title = title;
-        this.author = author;
+        super(title, author);
     }
-//    private List<Book> books = new ArrayList<>();
-//
-//    public BookManager(String title, String author, Book... books) {
-//        super();
-//        for (Book book : books) {
-//            this.books.add(book);
-//        };
-//    }
-//        public void createBook1(String realTitle, String realAuthor){title = realTitle; author = realAuthor;}
 
     public Book createBook(String title, String author) {
-        Book newBook = new Book(title, author);
-        return newBook;
-    }
 
-    public String getTitle() {
-        return title;
-    }
+        for (Book book : books) {
 
-    public String getAuthor() {
-        return author;
-    }
+            for (int i = 0; i < books.size(); i++) {
 
-    @Override
-    public String toString() {
-        return "Books Collection {" +
-                "title='" + title + '\'' +
-                ", author='" + author + '\'' +
-                '}';
+                if  (book.equals(books.get(i))) { return ((Book)books.remove(i)); }
+                else { return new Book(title, author); }
+            }
+        }
+        return new Book(title, author);
     }
 }

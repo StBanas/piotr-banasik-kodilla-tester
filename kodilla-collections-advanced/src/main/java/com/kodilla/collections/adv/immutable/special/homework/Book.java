@@ -7,10 +7,9 @@ public class Book {
     private String author;
 
     public Book(String title, String author) {
-        this.title = this.title;
-        this.author = this.author;
+        this.title = title;
+        this.author = author;
     }
-
 
     @Override
     public boolean equals(Object o) {
@@ -32,5 +31,13 @@ public class Book {
 
     public String getAuthor() {
         return author;
+    }
+
+    @Override
+    public String toString() {
+        return "Book Collection {" +
+                "title='" + title + '\'' +
+                ", author='" + author + '\'' +
+                '}';
     }
 }
