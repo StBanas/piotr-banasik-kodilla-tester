@@ -3,24 +3,27 @@ package com.kodilla.collections.adv.immutable.special.homework;
 import java.util.ArrayList;
 import java.util.List;
 
-public class BookManager extends Book {
+public class BookManager {
 
     List<Book> books = new ArrayList<>();
 
-    public BookManager(String title, String author) {
-        super(title, author);
-    }
-
-    public Book createBook(String title, String author) {
-
-        for (Book book : books) {
-
-            for (int i = 0; i < books.size(); i++) {
-
-                if  (book.equals(books.get(i))) { return ((Book)books.remove(i)); }
-                else { return new Book(title, author); }
-            }
-        }
+    public Book createBook(String title, String author)
+    {
+        Book item = new Book(title, author);
+        checkUniquness(item);
         return new Book(title, author);
     }
+    private void checkUniquness(Book item) {
+        for (Book newBook: books)
+            if( newBook.equals(item)) {
+            System.out.println("This book : " + newBook.getTitle() + " is already inserted into the collection.");
+            break;
+        }
+        books.add(item);
+    }
+
+    public List<Book> getList() {
+        return books;
+    }
+    
 }
