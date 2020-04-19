@@ -1,66 +1,72 @@
 package com.kodilla.collections.adv.exercises.homework;
-
 import java.util.*;
 
 public class FlightRepository {
+    Airport airport;
 
-    public static Map<Airport, List<Flight>> getConnections() {
+    public Map<Airport, List<Flight>> getConnections() {
         return connections;
     }
 
-    static Map<Airport, List<Flight>> connections = new HashMap<>();  // k: Airport wylotu , v: port docelowy
+    Map<Airport, List<Flight>> connections;  //<Airport,List<Flight>>
 
-    public void addConnection(Airport departure, Flight arrival) {
-        List<Flight> flights = connections.getOrDefault(departure, new ArrayList<>());
-        flights.add(arrival);
-        checkUniquness(arrival);
-        connections.put(departure, flights);
+    public FlightRepository(Airport airport, Map<Airport, List<Flight>> connections) {
+        this.airport = airport;
+        this.connections = connections;
     }
 
-    public void checkUniquness(Flight arrival) {
-        for ( List<Flight> newFlight : connections.values()) {
-            for (int i=0; i<connections.size();i++)
-                if (newFlight.equals(connections.get(i))){
-                    System.out.println("This flight: " + newFlight + " can't be added.");
-                    System.out.println(connections.get(i));
-                    break;
-                }
-        }
+    public static Map<Airport, List<Flight>> getFlightTable() {
+        return flightTable;
     }
-    public List<Flight> findFlightsFrom(String arrival, String departure) {
-        List<Flight> result = new ArrayList<>();
-        for (Flight whereFrom : connections.getOrDefault(departure, Collections.emptyList())) {
-            if (whereFrom.getArrival().equals(departure)) {       //co ja tu chciałem?
-                result.add(whereFrom);
-            }
-        }
-        return result;
-        }
 
-    public List<Flight> findFlightsTo(Airport departure, String arrival) {
-        List<Flight> result = new ArrayList<>();
-        for (Flight whereFrom : connections.getOrDefault(arrival, Collections.emptyList())) {
-            if (whereFrom.getArrival().equals(arrival)) {       //co ja tu chciałem?
-            }
-        }return result;
+    public static List<Flight> getFlightList() {
+        return flightList;
     }
-    public static List<Flight> getFlightsTable (Airport arrival) {
-        List<Flight> result = new ArrayList<>();
-        result.addAll(connections.getOrDefault(arrival, Collections.emptyList()));
-        return result;
+
+    static Map<Airport, List<Flight>> flightTable = new HashMap<>();  // k: Airport wylotu , v: port wylotu-port docelowy,
+    static List<Flight> flightList = new ArrayList<>();  // k: port wylotu , v: port docelowy,
+
+    public void addConnection(Airport departure, List<Flight> flight) {
+        List<Flight> flights = flightTable.getOrDefault(departure, Collections.emptyList());
+        flightTable.put(departure, flight);
     }
-    public static void main (String[] args) {
 
-        FlightRepository flight = new FlightRepository();
-        flight.addConnection(Airport.WAW, new Flight("Londyn", "Warszawa"));
-        flight.addConnection(Airport.LDN, new Flight("Warszawa", "Londyn"));
-        flight.addConnection(Airport.LDN, new Flight("Warszawa", "Londyn"));  // test na uniqueness required
+    public void addFlight(String airport, String departure) {
+        Flight flight = new Flight(departure, airport);
+        flightList.add(flight);
+    }
 
-        System.out.println(getFlightsTable(Airport.LDN));
-        System.out.println(getFlightsTable(Airport.WAW));
-        System.out.println(getFlightsTable(Airport.KRK));
+    public static void main(String[] args) {
+
+        FlightRepository repository = new FlightRepository(Airport.WAW, flightTable);
+
+    Flight flightLDN_WAW = new Flight("WAW", "LDN");
+    Flight flightKRK_WAW = new Flight("WAW", "KRK");
+    Flight flightWAW_LDN = new Flight("LDN", "WAW");
+    Flight flightKRK_LDN = new Flight("LDN", "KRK");
+    Flight flightLDN_WAW2 = new Flight("WAW", "LDN");
+    Flight flightWAW_KRK = new Flight("KRK", "WAW");
+    Flight flightLDN_KRK = new Flight("KRK", "LDN");
+    Flight flightKRK_WAW2 = new Flight("WAW", "KRK");
+
+    flightList.add(flightKRK_LDN);
+    flightList.add(flightWAW_LDN);
+    flightList.add(flightKRK_WAW);
+    flightList.add(flightLDN_WAW);
+    flightList.add(flightWAW_KRK);
+    flightList.add(flightLDN_KRK);
+
+    repository.addConnection(Airport.LDN,flightList);
+    repository.addConnection(Airport.KRK,flightList);
+    repository.addConnection(Airport.LDN,flightList);
+
+        System.out.println(flightList);
+        System.out.println(flightTable);
+
     }
 }
+
+
 
 //TODO: Zabezpieczyć przed połączeniem z "X" do "X";
 //TODO: Ustawić boolean: "WAW - LDN = true"  vs. "LDN - WAW =false"
