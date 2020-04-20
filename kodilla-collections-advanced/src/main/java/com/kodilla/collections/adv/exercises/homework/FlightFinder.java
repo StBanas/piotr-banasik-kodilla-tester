@@ -21,13 +21,15 @@ public class FlightFinder {
         return result;
         }
 
-//    public List<Flight> findFlightsTo( FlightRepository repository,String arrival) {
-//        List<Flight> result = new ArrayList<>();
-//        for (Flight whereFrom : repository.getOrDefault(arrival, Collections.emptyList())) {
-//            if (whereFrom.getArrival().equals(arrival)) {       //co ja tu chciałem?
-//            }
-//        }return result;
-//    }
+    public List<Flight> findFlightsTo( Map getFlightTable, String arrival) {
+        List<Flight> result = new ArrayList<>();
+        for (Flight To : getFlightList()) {
+            if (To.getArrival().equals(arrival)) {
+                result.add(To);                               //co ja tu chciałem?
+            }
+        }
+        return result;
+    }
 }
 
 

@@ -2,6 +2,7 @@ package com.kodilla.collections.adv.exercises.homework;
 
 import com.kodilla.collections.adv.exercises.homework.Airport;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import java.util.Objects;
@@ -16,6 +17,13 @@ public class Flight  {
     }
     public String getArrival() {
         return arrival;
+    }
+
+    static List<Flight> flightList = new ArrayList<>();
+
+    public void addFlight(String airport, String departure) {
+        Flight flight = new Flight(departure, airport);
+        flightList.add(flight);
     }
     public String getDeparture() {
         return departure;

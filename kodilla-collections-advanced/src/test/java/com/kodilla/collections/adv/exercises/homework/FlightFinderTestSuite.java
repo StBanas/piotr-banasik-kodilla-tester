@@ -62,19 +62,34 @@ class FlightFinderTestSuite {
 //        connections.addConnection(airport, departure);
 //
 //    }
-//    @Test
-//    void testFindFlightsFrom_ToTheAirport() {
-//        //given
-//        FlightRepository repository = new FlightRepository(Airport.WAW,flightTable);
-//        repository.addConnection(Airport.WAW, flightList);
-//        repository.addConnection(Airport.LDN, flightList);
-//        repository.addConnection(Airport.KRK, flightList);
-//
-//        //when
-//        FlightFinder finder = new FlightFinder(getFlightTable());
-//
-//        List<Flight> arrivals = finder.findFlightsFrom(getFlightTable(),"LDN");
-//        //then
-//        assertEquals(4, arrivals.size());
-//    }
+    @Test
+    void testFindFlightsFrom_ToTheAirport() {
+        //given
+
+        FlightRepository repository = new FlightRepository(Airport.WAW,flightTable);
+        Flight flightLDN_WAW = new Flight("WAW", "LDN");
+        Flight flightKRK_WAW = new Flight("WAW", "KRK");
+        Flight flightWAW_LDN = new Flight("LDN", "WAW");
+        Flight flightKRK_LDN = new Flight("LDN", "KRK");
+        Flight flightLDN_WAW2 = new Flight("WAW", "LDN");
+        Flight flightWAW_KRK = new Flight("KRK", "WAW");
+        Flight flightLDN_KRK = new Flight("KRK", "LDN");
+        Flight flightKRK_WAW2 = new Flight("WAW", "KRK");
+        flightKRK_LDN.addFlight("WAW", "LDN");
+        flightKRK_LDN.addFlight("WAW", "KRK");
+        flightKRK_LDN.addFlight("LDN", "WAW");
+        flightKRK_LDN.addFlight("KRK", "LDN");
+
+
+        repository.addConnection(Airport.WAW, flightList);
+        repository.addConnection(Airport.LDN, flightList);
+        repository.addConnection(Airport.KRK, flightList);
+
+        //when
+        FlightFinder finder = new FlightFinder(getFlightTable());
+
+        List<Flight> arrivals = finder.findFlightsFrom(getFlightTable(),"LDN");
+        //then
+        assertEquals(4, arrivals.size());
+    }
 }

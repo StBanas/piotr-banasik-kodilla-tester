@@ -2,26 +2,17 @@ package com.kodilla.collections.adv.exercises.homework;
 import java.util.*;
 
 public class FlightRepository {
-    Airport airport;
+//    Airport airport;
+    Map<Airport, List<Flight>> connections;
 
-    public Map<Airport, List<Flight>> getConnections() {
-        return connections;
-    }
-
-    Map<Airport, List<Flight>> connections;  //<Airport,List<Flight>>
-
-    public FlightRepository(Airport airport, Map<Airport, List<Flight>> connections) {
-        this.airport = airport;
+    public FlightRepository( Map<Airport, List<Flight>> connections) {     //Airport airport,
+//        this.airport = airport;
         this.connections = connections;
     }
 
-    public static Map<Airport, List<Flight>> getFlightTable() {
-        return flightTable;
-    }
+    public static Map<Airport, List<Flight>> getFlightTable() { return flightTable;}
 
-    public static List<Flight> getFlightList() {
-        return flightList;
-    }
+    public static List<Flight> getFlightList() { return flightList; }
 
     static Map<Airport, List<Flight>> flightTable = new HashMap<>();  // k: Airport wylotu , v: port wylotu-port docelowy,
     static List<Flight> flightList = new ArrayList<>();  // k: port wylotu , v: port docelowy,
@@ -31,37 +22,42 @@ public class FlightRepository {
         flightTable.put(departure, flight);
     }
 
-    public void addFlight(String airport, String departure) {
-        Flight flight = new Flight(departure, airport);
+    public void addFlight(String arrival, String departure) {
+        Flight flight = new Flight(arrival, departure);
         flightList.add(flight);
     }
 
     public static void main(String[] args) {
 
-        FlightRepository repository = new FlightRepository(Airport.WAW, flightTable);
+        FlightRepository repository = new FlightRepository( getFlightTable()); //Airport.WAW,
 
-    Flight flightLDN_WAW = new Flight("WAW", "LDN");
-    Flight flightKRK_WAW = new Flight("WAW", "KRK");
-    Flight flightWAW_LDN = new Flight("LDN", "WAW");
-    Flight flightKRK_LDN = new Flight("LDN", "KRK");
-    Flight flightLDN_WAW2 = new Flight("WAW", "LDN");
-    Flight flightWAW_KRK = new Flight("KRK", "WAW");
-    Flight flightLDN_KRK = new Flight("KRK", "LDN");
-    Flight flightKRK_WAW2 = new Flight("WAW", "KRK");
+    Flight LDN_WAW = new Flight("WAW", "LDN");
+    Flight KRK_WAW = new Flight("WAW", "KRK");
+    Flight WAW_LDN = new Flight("LDN", "WAW");
+    Flight KRK_LDN = new Flight("LDN", "KRK");
+    Flight WAW_KRK = new Flight("KRK", "WAW");
+    Flight LDN_KRK = new Flight("KRK", "LDN");
 
-    flightList.add(flightKRK_LDN);
-    flightList.add(flightWAW_LDN);
-    flightList.add(flightKRK_WAW);
-    flightList.add(flightLDN_WAW);
-    flightList.add(flightWAW_KRK);
-    flightList.add(flightLDN_KRK);
+//    WAW_LDN.addFlight("WAW", "LDN");
+//    WAW_KRK.addFlight("WAW", "KRK");
+//    LDN_WAW.addFlight("LDN", "WAW");
+//    LDN_KRK.addFlight("LDN", "KRK");
+//    KRK_LDN.addFlight("KRK", "LDN");
+//    KRK_WAW.addFlight("KRK", "WAW");
 
-    repository.addConnection(Airport.LDN,flightList);
-    repository.addConnection(Airport.KRK,flightList);
-    repository.addConnection(Airport.LDN,flightList);
+    flightList.add(KRK_LDN);
+    flightList.add(WAW_LDN);
+    flightList.add(KRK_WAW);
+    flightList.add(LDN_WAW);
+    flightList.add(WAW_KRK);
+    flightList.add(LDN_KRK);
 
-        System.out.println(flightList);
-        System.out.println(flightTable);
+    repository.addConnection(Airport.LDN,getFlightList());
+    repository.addConnection(Airport.KRK,getFlightList());
+    repository.addConnection(Airport.WAW,getFlightList());
+
+        System.out.println(getFlightList());
+        System.out.println(getFlightTable());
 
     }
 }
