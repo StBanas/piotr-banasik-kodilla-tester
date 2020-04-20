@@ -57,30 +57,30 @@ public class Runner {
 //
 ////        System.out.println(departures1);
 ////        System.out.println(departures2);
-        Map<Airport,List<Flight>> repository = FlightRepository.flightTable;
-
-        FlightRepository.addFlight("KRK","LDN");
-        FlightRepository.addFlight("KRK","WAW");
-        FlightRepository.addFlight("WAW","LDN");
-        FlightRepository.addFlight("WAW","KRK");
-        FlightRepository.addFlight("LDN","WAW");
-        FlightRepository.addFlight("LDN","KRK");
-
-        FlightRepository.addConnection(Airport.KRK,flightList);
-        FlightRepository.addConnection(Airport.WAW,flightList);
-        FlightRepository.addConnection(Airport.LDN,flightList);
-
-        FlightFinder finder = new FlightFinder(flightTable);
+//        Map<Airport,List<Flight>> repository = FlightRepository.flightTable;
+//
+//        FlightRepository.addFlight("KRK","LDN");
+//        FlightRepository.addFlight("KRK","WAW");
+//        FlightRepository.addFlight("WAW","LDN");
+//        FlightRepository.addFlight("WAW","KRK");
+//        FlightRepository.addFlight("LDN","WAW");
+//        FlightRepository.addFlight("LDN","KRK");
+//
+//        FlightRepository.addConnection(Airport.KRK,flightList);
+//        FlightRepository.addConnection(Airport.WAW,flightList);
+//        FlightRepository.addConnection(Airport.LDN,flightList);
+//
+//        FlightFinder finder = new FlightFinder(flightTable);
 
         //when
-        List<Flight> arrivals = finder.findFlightsFrom(flightTable,"WAW");
+//        List<Flight> arrivals = finder.findFlightsFrom(flightTable,"WAW");
 //        List<Flight> arrivals1 = finder.findFlightsFrom(flightTable,"LDN");
 //        List<Flight> arrivals2 = finder.findFlightsFrom(flightTable,"KRK");
-
-        System.out.println(arrivals);
-        System.out.println("===============================");
-
-//        System.out.println(arrivals1);
+//
+//        System.out.println(arrivals);
+//        System.out.println("===============================");
+//
+////        System.out.println(arrivals1);
 //        System.out.println("===============================");
 //
 //        System.out.println(arrivals2);
@@ -91,5 +91,6 @@ public class Runner {
 //        assertEquals(6, arrivals1.size());
 //        assertEquals(2, arrivals2.size());
 //        }
+        System.out.println(flightList);
         }
 }

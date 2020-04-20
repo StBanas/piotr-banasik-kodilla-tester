@@ -11,7 +11,7 @@ public class FlightFinder {
         this.airportTable = airportTable;
     }
 
-    public List<Flight> findFlightsFrom(Map getFlightTable, String departure) {
+    public List<Flight> findFlightsFrom( Map flightTable, String departure) {
         List<Flight> result = new ArrayList<>();
         for (Flight From : flightList) {
             if (From.getDeparture().equals(departure)) {
@@ -21,11 +21,11 @@ public class FlightFinder {
         return result;
         }
 
-    public List<Flight> findFlightsTo( Map getFlightTable, String arrival) {
+    public List<Flight> findFlightsTo( Map flightTable, String arrival) {
         List<Flight> result = new ArrayList<>();
         for (Flight To : flightList) {
             if (To.getArrival().equals(arrival)) {
-                result.add(To);                               //co ja tu chciałem?
+                result.add(To);
             }
         }
         return result;

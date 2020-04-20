@@ -19,12 +19,6 @@ public class Flight  {
         return arrival;
     }
 
-    static List<Flight> flightList = new ArrayList<>();
-
-    public void addFlight(String airport, String departure) {
-        Flight flight = new Flight(departure, airport);
-        flightList.add(flight);
-    }
     public String getDeparture() {
         return departure;
     }
