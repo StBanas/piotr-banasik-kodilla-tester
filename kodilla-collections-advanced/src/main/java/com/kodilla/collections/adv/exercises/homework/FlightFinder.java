@@ -13,8 +13,8 @@ public class FlightFinder {
 
     public List<Flight> findFlightsFrom(Map getFlightTable, String departure) {
         List<Flight> result = new ArrayList<>();
-        for (Flight From : getFlightList()) {
-            if (From.getDeparture().equals(departure)) {       //co ja tu chciałem?
+        for (Flight From : flightList) {
+            if (From.getDeparture().equals(departure)) {
                 result.add(From);
             }
         }
@@ -23,7 +23,7 @@ public class FlightFinder {
 
     public List<Flight> findFlightsTo( Map getFlightTable, String arrival) {
         List<Flight> result = new ArrayList<>();
-        for (Flight To : getFlightList()) {
+        for (Flight To : flightList) {
             if (To.getArrival().equals(arrival)) {
                 result.add(To);                               //co ja tu chciałem?
             }
