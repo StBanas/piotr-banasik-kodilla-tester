@@ -5,15 +5,12 @@ import java.util.*;
 import static com.kodilla.collections.adv.exercises.homework.FlightRepository.*;
 
 public class FlightFinder {
-    Map airportTable;
+    List<Flight> flights = new ArrayList<>();
+    Map<Airport, List<Flight>> flightList = new HashMap<>(); ;
 
-    public FlightFinder(Map airportTable) {
-        this.airportTable = airportTable;
-    }
-
-    public List<Flight> findFlightsFrom( Map flightTable, String departure) {
+    public List<Flight> findFlightsFrom(Airport airport, String departure) { // wyjęte z nawiasu arg = Map flightTable,
         List<Flight> result = new ArrayList<>();
-        for (Flight From : flightList) {
+        for (Flight From : flights) {
             if (From.getDeparture().equals(departure)) {
                 result.add(From);
             }
@@ -21,9 +18,9 @@ public class FlightFinder {
         return result;
         }
 
-    public List<Flight> findFlightsTo( Map flightTable, String arrival) {
+    public List<Flight> findFlightsTo(Airport airport, String arrival) {           // Map flightTable,
         List<Flight> result = new ArrayList<>();
-        for (Flight To : flightList) {
+        for (Flight To : flights) {
             if (To.getArrival().equals(arrival)) {
                 result.add(To);
             }

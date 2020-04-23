@@ -3,6 +3,7 @@ package com.kodilla.collections.adv.exercises.homework;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -13,25 +14,25 @@ class FlightFinderTestSuite {
 
     @Test
     void testaddConnection() {
+
         FlightRepository connections = new FlightRepository(Airport.LDN, flightTable);
-        Flight departure = new Flight("Warszawa", "Kraków");
-//        connections.addConnection(Airport.WAW, flightList);
-        connections.addFlight("Warszawa", "Kraków");
+        connections.addFlight(Airport.LDN,"WAW", "KRK");
+        connections.addFlight(Airport.LDN,"LDN", "KRK");
         int result = flightList.size();
-        assertEquals(1, result);
+        assertEquals(2, result);
     }
 
     @Test
     void testaddExistingConnection() {
         FlightRepository connections = new FlightRepository(Airport.LDN,flightTable);
         Airport airport = Airport.WAW;
-        Flight departure = new Flight("Warszawa", "Kraków");
+        Flight departure = new Flight(Airport.WAW, "WAW","KRK");
         connections.addConnection(airport, flightList);
-        connections.addFlight("Warszawa", "Kraków");
+        connections.addFlight(Airport.WAW,"WAW", "KRK");
         int result1 = flightList.size();
 
         Airport airport1 = Airport.WAW;
-        Flight departure1 = new Flight("Warszawa", "Kraków");
+        Flight departure1 = new Flight(Airport.WAW, "WAW","KRK");
         connections.addConnection(airport1, flightList);
         System.out.println(flightTable);
         System.out.println(flightList);
@@ -44,19 +45,13 @@ class FlightFinderTestSuite {
     void testaddNotCorrectConnection() {
         FlightRepository repository = new FlightRepository(Airport.KRK, flightTable);
         System.out.println(flightList);
+        repository.addFlight(Airport.KRK,"KRK","LDN");
+        repository.addFlight(Airport.KRK,"KRK","KRK");
 
-
-        repository.addFlight("KRK","LDN");
-        repository.addFlight("KRK","KRK");
-//        repository.addConnection(Airport.KRK,flightList);
-        FlightFinder finder = new FlightFinder(flightTable);
-
-//        List<Flight> departures2 = finder.findFlightsTo(flightTable,"KRK");
-
-        List<Flight> arrivals = finder.findFlightsFrom(flightTable,"KRK");
-        System.out.println(flightList);
-//        assertEquals(2, departures2.size(),0.01);
-        assertEquals(1, arrivals.size());
+        FlightFinder finder = new FlightFinder();
+        List<Flight> arrivals = finder.findFlightsFrom(Airport.KRK,"KRK");    //flightTable,
+        System.out.println(flightList.size());
+        assertEquals(0, arrivals.size());
 
     }
 
@@ -65,46 +60,44 @@ class FlightFinderTestSuite {
         //given
         FlightRepository repository = new FlightRepository(Airport.WAW, flightTable);
 
-        repository.addFlight("KRK","LDN");
-        repository.addFlight("KRK","WAW");
-        repository.addFlight("WAW","LDN");
-        repository.addFlight("WAW","KRK");
-        repository.addFlight("LDN","WAW");
-        repository.addFlight("LDN","KRK");
+        repository.addFlight(Airport.KRK,"KRK","LDN");
+        repository.addFlight(Airport.KRK,"KRK","WAW");
+        repository.addFlight(Airport.WAW,"WAW","LDN");
+        repository.addFlight(Airport.WAW,"WAW","KRK");
+        repository.addFlight(Airport.LDN,"LDN","WAW");
+        repository.addFlight(Airport.LDN,"LDN","KRK");
 
         repository.addConnection(Airport.KRK,flightList);
-//        repository.addConnection(Airport.WAW,flightList);
+        repository.addConnection(Airport.WAW,flightList);
+        repository.addConnection(Airport.LDN,flightList);
 
-        FlightFinder finder = new FlightFinder(flightTable);
+        FlightFinder finder = new FlightFinder();
 
         //when
-        List<Flight> departures = finder.findFlightsTo(flightTable,"WAW");
-//        List<Flight> departures1 = finder.findFlightsTo(flightTable,"LDN");
-//        List<Flight> departures2 = finder.findFlightsTo(flightTable,"KRK");
+        List<Flight> departures = finder.findFlightsTo(Airport.WAW,"WAW");  //flightTable,
         //then
         assertEquals(2, departures.size());
-//        assertEquals(2, departures1.size());
-//        assertEquals(2, departures2.size());
     }
+
     @Test
     void testFindFlightsArriving_ToTheAirport() {
         //given
         FlightRepository repository = new FlightRepository(Airport.WAW, flightTable);
 
-        repository.addFlight("KRK","LDN");
-        repository.addFlight("KRK","WAW");
-        repository.addFlight("WAW","LDN");
-        repository.addFlight("WAW","KRK");
-        repository.addFlight("LDN","WAW");
-        repository.addFlight("LDN","KRK");
+        repository.addFlight(Airport.KRK,"KRK","LDN");
+        repository.addFlight(Airport.KRK,"KRK","WAW");
+        repository.addFlight(Airport.WAW,"WAW","LDN");
+        repository.addFlight(Airport.WAW,"WAW","KRK");
+        repository.addFlight(Airport.LDN,"LDN","WAW");
+        repository.addFlight(Airport.LDN,"LDN","KRK");
 
-        repository.addConnection(Airport.KRK,flightList);
+//        repository.addConnection(Airport.KRK,flightList);
 //        repository.addConnection(Airport.WAW,flightList);
 
-        FlightFinder finder = new FlightFinder(flightTable);
+        FlightFinder finder = new FlightFinder();
 
         //when
-        List<Flight> arrivals = finder.findFlightsFrom(flightTable,"WAW");
+        List<Flight> arrivals = finder.findFlightsFrom(Airport.WAW,"WAW");    // flightTable,
 //        List<Flight> arrivals1 = finder.findFlightsFrom(flightTable,"LDN");
 //        List<Flight> arrivals2 = finder.findFlightsFrom(flightTable,"KRK");
 

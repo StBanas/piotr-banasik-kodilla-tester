@@ -19,8 +19,8 @@ public class FlightRepository {
         flightTable.put(departure, flight);
     }
 
-    public void addFlight(String arrival, String departure) {
-        Flight flight = new Flight(arrival, departure);
+    public void addFlight(Airport airport, String arrival, String departure) {
+        Flight flight = new Flight(airport,arrival, departure);
 //        checkUniqueness(flight);
         checkCorrectness(flight);
         flightList.add(flight);
@@ -46,15 +46,16 @@ public class FlightRepository {
     public static void main(String[] args) {
         FlightRepository repository = new FlightRepository(Airport.WAW, flightTable);
 
-    repository.addFlight("KRK","LDN");
-    repository.addFlight("KRK","WAW");
-    repository.addFlight("WAW","LDN");
-    repository.addFlight("WAW","KRK");
-    repository.addFlight("LDN","WAW");
-    repository.addFlight("LDN","KRK");
+    repository.addFlight(Airport.KRK,"KRK","LDN");
+    repository.addFlight(Airport.KRK,"KRK","WAW");
+    repository.addFlight(Airport.WAW,"WAW","LDN");
+    repository.addFlight(Airport.WAW,"WAW","KRK");
+    repository.addFlight(Airport.LDN,"LDN","WAW");
+    repository.addFlight(Airport.LDN,"LDN","KRK");
 
     repository.addConnection(Airport.KRK,flightList);
     repository.addConnection(Airport.WAW,flightList);
+    repository.addConnection(Airport.LDN,flightList);
 
         System.out.println(flightList);
         System.out.println(flightTable);
