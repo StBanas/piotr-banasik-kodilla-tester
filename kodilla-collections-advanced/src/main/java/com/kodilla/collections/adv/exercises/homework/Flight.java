@@ -3,12 +3,12 @@ package com.kodilla.collections.adv.exercises.homework;
 import java.util.Objects;
 
 public class Flight {
-    public Airport airport;
+
     public String arrival;
     public String departure;
 
-    public Flight(Airport airport, String arrival, String departure) {      //, String arrival
-        this.airport = airport;
+    public Flight( String arrival, String departure) {      //, String arrival
+
         this.arrival = arrival;
         this.departure = departure;
     }
@@ -21,22 +21,26 @@ public class Flight {
         return departure;
     }
 
-    public Airport getAirport() {
-        return airport;
-    }
 
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (!(o instanceof Flight)) return false;
         Flight flight = (Flight) o;
-        return airport == flight.airport &&
-                Objects.equals(arrival, flight.arrival) &&
+        return Objects.equals(arrival, flight.arrival) &&
                 Objects.equals(departure, flight.departure);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(airport, arrival, departure);
+        return Objects.hash(arrival, departure);
+    }
+
+    @Override
+    public String toString() {
+        return "Flight{" +
+                "arrival='" + arrival + '\'' +
+                ", departure='" + departure + '\'' +
+                '}';
     }
 }

@@ -3,62 +3,53 @@ package com.kodilla.collections.adv.exercises.homework;
 import java.util.*;
 
 public class FlightRepository {
-    Airport airport;
-    Map<Airport, List<Flight>> connections;
 
-    public FlightRepository(Airport airport, Map<Airport, List<Flight>> connections) {
-        this.airport = airport;
-        this.connections = connections;
+    List<Flight> flights;
+
+    public FlightRepository( List<Flight> flights) {
+
+        this.flights = flights;
     }
+    public static List<Flight> flightList = new ArrayList<>();
 
-    static Map<Airport, List<Flight>> flightTable = new HashMap<>();  // k: Airport wylotu , v: port wylotu-port docelowy,
-    static List<Flight> flightList = new ArrayList<>();  // k: port wylotu , v: port docelowy,
-
-    public void addConnection(Airport departure, List<Flight> flight) {
-        List<Flight> flights = flightTable.getOrDefault(departure, Collections.emptyList());
-        flightTable.put(departure, flight);
-    }
-
-    public void addFlight(Airport airport, String arrival, String departure) {
-        Flight flight = new Flight(airport,arrival, departure);
+    public void addFlights(List<Flight> list, String arrival, String departure) {
+        Flight flight = new Flight(arrival, departure);
+        checkCorrectness(flight);   ///list,
 //        checkUniqueness(flight);
-        checkCorrectness(flight);
+    }
+
+    private void checkCorrectness(Flight flight) {  //List<Flight> flightList,
+        for (Flight fly : flightList){
+            if (flight.getDeparture().equals(flight.getArrival())) { /// && fly.getArrival().equals(flight.getArrival())
+                System.out.println("This flight from " + flight.getDeparture() + " to " + flight.getArrival() + " is not available.");
+                break;
+            }
+        } checkUniqueness(flight);
+
         flightList.add(flight);
     }
 
-//    private void checkUniqueness(Flight flight) {
-//        for (Flight fly : flightList)
-//            if (fly.getDeparture().equals(flight.getDeparture()) && fly.getArrival().equals(flight.getArrival())) {
-//                System.out.println("This flight : " + flight + " is already on the list.");
-//                break;
-//            }
-//        flightList.add(flight);
-//    }
-    private void checkCorrectness(Flight flight) {
+    private void checkUniqueness(Flight flight) {
         for (Flight fly : flightList) {
-            if (flight.getDeparture().equals(flight.getArrival()))  {
-            System.out.println("This flight : " + flight + " is not available.");
+            if (fly.getDeparture().equals(flight.getDeparture()) && fly.getArrival().equals(flight.getArrival())) {
+                System.out.println("This flight : " + flight + " is already on the list.");
                 break;
             }
         }
-    }
+//        flightList.add(flight);
+   }
 
     public static void main(String[] args) {
-        FlightRepository repository = new FlightRepository(Airport.WAW, flightTable);
 
-    repository.addFlight(Airport.KRK,"KRK","LDN");
-    repository.addFlight(Airport.KRK,"KRK","WAW");
-    repository.addFlight(Airport.WAW,"WAW","LDN");
-    repository.addFlight(Airport.WAW,"WAW","KRK");
-    repository.addFlight(Airport.LDN,"LDN","WAW");
-    repository.addFlight(Airport.LDN,"LDN","KRK");
+        FlightRepository repository = new FlightRepository(flightList);
 
-    repository.addConnection(Airport.KRK,flightList);
-    repository.addConnection(Airport.WAW,flightList);
-    repository.addConnection(Airport.LDN,flightList);
+    flightList.add(new Flight("KRK", "LDN"));
+    flightList.add(new Flight("KRK", "WAW"));
+    flightList.add(new Flight("WAW", "LDN"));
+    flightList.add(new Flight( "WAW", "KRK"));
+    flightList.add(new Flight("LDN", "KRK"));
+    flightList.add(new Flight( "LDN", "WAW"));
 
-        System.out.println(flightList);
-        System.out.println(flightTable);
     }
 }
-//TODO: checkUniqueness  - Zabezpieczyc przed podwójnymi połączeniami w flightTable
+//TODO: checkUniqueness  - Zabezpieczyc przed podwójnymi połączeniami
