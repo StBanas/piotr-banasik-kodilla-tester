@@ -6,6 +6,7 @@ import java.util.stream.Collector;
 import java.util.stream.Collectors;
 
 public class ForumStats {
+    
     public static void main(String[] args) {
         double avgOverForty = UsersRepository.getUsersList()
                 .stream()
