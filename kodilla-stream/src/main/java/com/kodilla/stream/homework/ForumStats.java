@@ -17,7 +17,7 @@ public class ForumStats {
 
         System.out.println(avgOverForty);
 
-        double avgBeloveForty = UsersRepository.getUsersList()
+        double avgBelowForty = UsersRepository.getUsersList()
                 .stream()
                 .filter(u -> (u.getAge() < 40))
                 .map(u -> u.getNumberOfPosts())
@@ -25,7 +25,7 @@ public class ForumStats {
                 .average()
                 .getAsDouble();
 
-        System.out.println(avgBeloveForty);
+        System.out.println(avgBelowForty);
 
     }
 
