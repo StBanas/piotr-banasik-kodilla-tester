@@ -12,58 +12,67 @@ class FlightFinderTestSuite {
 
     @Test
     void testaddFlight() {
-        flightList.clear();
-        Flight flight = new Flight("WAW","KRK");
-        flightList.add(flight);
+        //given
+        getFlightList().clear();
+        FlightRepository repository = new FlightRepository(getFlightList());
+        repository.addFlights("WAW", "KRK");
 
-        FlightRepository connections = new FlightRepository(flightList);
-        int result = flightList.size();
+        //when
+        int result = getFlightList().size();
+        //then
         assertEquals(1, result);
     }
 
     @Test
     void testaddExistingFlight() {
-        flightList.clear();
+        //given
+        getFlightList().clear();
+        FlightRepository connections = new FlightRepository(getFlightList());
+        connections.addFlights("WAW", "KRK");
 
-        Flight flight = new Flight("WAW","KRK");
-        flightList.add(flight);
-
-        int result1 = flightList.size();
+        //when
+        int result1 = getFlightList().size();
+        //then
         assertEquals(1, result1);
 
-        Flight flight2 = new Flight("WAW","KRK");
-        flightList.add(flight);
-        int result2 = flightList.size();
 
-        assertEquals(2, result2); // TODO -uniqueness
+        //given II
+        connections.addFlights("WAW", "KRK");
+
+        //when II
+        int result2 = getFlightList().size();
+        //then II
+        assertEquals(1, result2);
     }
 
     @Test
     void testaddNotCorrectConnection() {
-        flightList.clear();
+        //given
+        getFlightList().clear();
+        FlightRepository repository = new FlightRepository(getFlightList());
+        repository.addFlights("KRK", "LDN");
+        repository.addFlights("KRK", "KRK");
 
-        FlightRepository repository = new FlightRepository(flightList);
-        repository.addFlights("KRK","LDN");
-        repository.addFlights("KRK","KRK");  //TODO - correctness
-
-        int result = flightList.size();
+        //when
+        int result = getFlightList().size();
+        //then
         assertEquals(1, result);
     }
 
     @Test
     void testFindDeparting_FromTheAirport() {
         //given
-        flightList.clear();
-        FlightRepository repository = new FlightRepository(flightList);
-        repository.addFlights("KRK","LDN");
-        repository.addFlights("KRK","WAW");
-        repository.addFlights("WAW","LDN");
-        repository.addFlights("WAW","KRK");
-        repository.addFlights("LDN","WAW");
-        repository.addFlights("LDN","KRK");
+        getFlightList().clear();
+        FlightRepository repository = new FlightRepository(getFlightList());
+        repository.addFlights("KRK", "LDN");
+        repository.addFlights("KRK", "WAW");
+        repository.addFlights("WAW", "LDN");
+        repository.addFlights("WAW", "KRK");
+        repository.addFlights("LDN", "WAW");
+        repository.addFlights("LDN", "KRK");
 
         //when
-        FlightFinder finder = new FlightFinder(flightList);
+        FlightFinder finder = new FlightFinder(getFlightList());
         List<Flight> departures = finder.findFlightsFrom("WAW");
         //then
         assertEquals(2, departures.size());
@@ -72,18 +81,17 @@ class FlightFinderTestSuite {
     @Test
     void testFindFlightsArriving_ToTheAirport() {
         //given
-        flightList.clear();
-        FlightRepository repository0 = new FlightRepository(flightList);
-
-        repository0.addFlights("KRK","LDN");
-        repository0.addFlights("KRK","WAW");
-        repository0.addFlights("WAW","LDN");
-        repository0.addFlights("WAW","KRK");
-        repository0.addFlights("LDN","WAW");
-        repository0.addFlights("LDN","KRK");
+        getFlightList().clear();
+        FlightRepository repository0 = new FlightRepository(getFlightList());
+        repository0.addFlights("KRK", "LDN");
+        repository0.addFlights("KRK", "WAW");
+        repository0.addFlights("WAW", "LDN");
+        repository0.addFlights("WAW", "KRK");
+        repository0.addFlights("LDN", "WAW");
+        repository0.addFlights("LDN", "KRK");
 
         //when
-        FlightFinder finder = new FlightFinder(flightList);
+        FlightFinder finder = new FlightFinder(getFlightList());
         List<Flight> arrivals = finder.findFlightsTo("WAW");
         //then
         assertEquals(2, arrivals.size());
