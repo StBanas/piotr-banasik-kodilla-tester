@@ -7,7 +7,7 @@ public class Flight {
     public String arrival;
     public String departure;
 
-    public Flight( String arrival, String departure) {      //, String arrival
+    public Flight(String arrival, String departure) {
 
         this.arrival = arrival;
         this.departure = departure;
