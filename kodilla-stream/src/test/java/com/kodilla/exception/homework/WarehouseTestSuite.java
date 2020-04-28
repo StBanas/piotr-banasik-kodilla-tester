@@ -10,10 +10,9 @@ import static org.junit.Assert.assertEquals;
 
 public class WarehouseTestSuite {
 
-   @Test
+    @Test
     public void testaddOrder() {
         //given
-       //.clear();
         List<Order> orderList = new ArrayList<>();
         Warehouse warehouse = new Warehouse(orderList);
         Order tenOOne = new Order("1001");
@@ -22,28 +21,26 @@ public class WarehouseTestSuite {
 
         //when
         int result = warehouse.orderList.size();
-       System.out.println(result);
+        System.out.println(result);
         //then
         assertEquals(1, result);
     }
 
-//System.out.println(warehouse.getOrder("1001"));
-@Test
-public void testaddNextOrderWithTheSameNumber() {
-    //given
-    //.clear();
-    List<Order> orderList = new ArrayList<>();
-    Warehouse warehouse = new Warehouse(orderList);
-    Order tenOOne = new Order("1001");
-    warehouse.addOrder(tenOOne);
+    @Test
+    public void testaddNextOrderWithTheSameNumber() {
+        //given
+        List<Order> orderList = new ArrayList<>();
+        Warehouse warehouse = new Warehouse(orderList);
+        Order tenOOne = new Order("1001");
+        warehouse.addOrder(tenOOne);
 
-    Order tenOTwo = new Order("1001");
-    warehouse.addOrder(tenOTwo);
+        Order tenOTwo = new Order("1001");
+        warehouse.addOrder(tenOTwo);
 
 
-    //when
-    int result = warehouse.orderList.size();
-    //then
-    assertEquals(1, result);
-}
+        //when
+        int result = warehouse.orderList.size();
+        //then
+        assertEquals(1, result);
+    }
 }

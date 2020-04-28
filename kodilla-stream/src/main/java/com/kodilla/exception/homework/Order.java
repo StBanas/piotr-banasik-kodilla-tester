@@ -7,7 +7,5 @@ public class Order {
         this.number = number;
     }
 
-    public String getNumber() {
-        return number;
-    }
+    public String getNumber() { return number; }
 }

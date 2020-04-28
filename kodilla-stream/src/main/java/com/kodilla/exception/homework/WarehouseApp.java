@@ -17,25 +17,20 @@ public class WarehouseApp {
         warehouse.addOrder(new Order("1003"));
         warehouse.addOrder(new Order("1004"));
 
-
-
         try {
-
-            String no = giveOrderNumber();
-            System.out.println(no);
-            boolean isOrderPlaced = warehouse.isOrderInWarehouse("1001");
+            String number = giveOrderNumber();
+            boolean isOrderPlaced = warehouse.isOrderInWarehouse(number);
             System.out.println("Order status : " + isOrderPlaced);
-            System.out.println("Please collect your order in Warehouse Dipatch Spot.");
+            System.out.println("Please collect your order in Warehouse Dispatch Dept.");
         } catch (Exception e) {
 
             System.out.println("Sorry, this order is not in Warehouse yet.");
         } finally {
             System.out.println("Thank you for your... bla bla bla");
-
         }
     }
 
-    public static String giveOrderNumber () {
+    public static String giveOrderNumber() {
         Scanner scanner = new Scanner(System.in);
         while (true) {
             System.out.println(" Enter number of your order ");
