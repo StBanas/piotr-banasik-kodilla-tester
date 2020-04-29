@@ -7,6 +7,7 @@ import java.util.List;
 
 import static com.kodilla.exception.homework.Warehouse.*;
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 
 public class WarehouseTestSuite {
 
@@ -43,4 +44,32 @@ public class WarehouseTestSuite {
         //then
         assertEquals(1, result);
     }
+    @Test
+    public void testisOrder () throws OrderDoesntExistException {
+
+        //given
+        List<Order> orderList = new ArrayList<>();
+        Warehouse warehouse = new Warehouse(orderList);
+        warehouse.addOrder(new Order("1111"));
+        //when
+        boolean isOrderPlaced = warehouse.isOrderInWarehouse("2222");
+        //then
+        assertTrue(isOrderPlaced);
+    }
+
+
+    @Test(expected = OrderDoesntExistException.class)
+    public void testisOrder_withException () throws OrderDoesntExistException {
+
+        //given
+        List<Order> orderList = new ArrayList<>();
+        Warehouse warehouse = new Warehouse( orderList);
+        warehouse.addOrder(new Order("1111"));
+        //when
+        boolean isOrderPlaced = warehouse.isOrderInWarehouse("2222");
+        //then
+        assertTrue(isOrderPlaced);
+    }
+
+
 }
