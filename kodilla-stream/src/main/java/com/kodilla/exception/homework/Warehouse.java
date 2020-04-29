@@ -9,41 +9,38 @@ public class Warehouse {
         this.orders = orders;
     }
 
-    public List<Order> orderList = new ArrayList<>();
-
-    public List<Order> getOrderList() {
-        return orderList;
-    }
-
     public void addOrder(Order order) {
         checkUniqueness(order);
     }
 
     public boolean isOrderInWarehouse(String number) throws OrderDoesntExistException {
 
-        if (getOrderList().contains(getOrder(number))) {
-            return true;
+        if (orders.contains(getOrder(number)))
+        {  return true;
+//        }
+//        Order order = getOrder(number);
+//        if (order != null) {
+//            return true;
         }
-        throw new OrderDoesntExistException();
+        return false;
     }
-
-    public Order getOrder(String number) {
-        return getOrderList()
+    public Order getOrder(String number) throws OrderDoesntExistException {
+        return orders
                 .stream()
-                .filter(o -> o.getNumber().contains(number))
-                .findAny().get();
+                .filter(o -> number.equals(o.getNumber()))
+                .findFirst().orElseThrow(OrderDoesntExistException::new);
     }
 
     public void checkUniqueness(Order order) {
         boolean isUnique = true;
-        for (Order o : getOrderList()) {
+        for (Order o : orders) {
             if (o.getNumber().equals(order.number)) {
                 System.out.println("This order is already on the list");
                 isUnique = false;
             }
         }
         if (isUnique) {
-            getOrderList().add(order);
+            orders.add(order);
         }
     }
 }

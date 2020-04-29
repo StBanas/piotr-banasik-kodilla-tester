@@ -11,6 +11,7 @@ public class WarehouseApp {
 
     public static void main(String[] args) {
         List<Order> orderList = new ArrayList<>();
+        orderList.add(new Order("1111"));
         Warehouse warehouse = new Warehouse(orderList);
         warehouse.addOrder(new Order("1001"));
         warehouse.addOrder(new Order("1002"));
@@ -22,7 +23,7 @@ public class WarehouseApp {
             boolean isOrderPlaced = warehouse.isOrderInWarehouse(number);
             System.out.println("Order status : " + isOrderPlaced);
             System.out.println("Please collect your order in Warehouse Dispatch Dept.");
-        } catch (Exception e) {
+        } catch (OrderDoesntExistException e) {
 
             System.out.println("Sorry, this order is not in Warehouse yet.");
         } finally {
