@@ -1,0 +1,23 @@
+package com.kodilla.paramertized_tests.homework;
+
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
+public class UserValidator {
+    public boolean validateUsername(String username) {
+        String regex = "^[a-zA-Z- -0-9._-]{3,}";
+        Pattern pattern = Pattern.compile(regex);
+        Matcher matcher = pattern.matcher(username);
+        return matcher.matches();
+    }
+
+    public boolean validateEmail(String email) {
+        if (null != email) {
+            String regex = "^([_a-zA-Z0-9-]+(\\.[_a-zA-Z0-9-]+)*@[a-zA-Z0-9-]+(\\.[a-zA-Z0-9-]+)*(\\.[a-zA-Z]{1,6}))?$";
+            Pattern pattern = Pattern.compile(regex);
+            Matcher matcher = pattern.matcher(email);
+            return matcher.matches();
+        }
+        return false;
+    }
+}
