@@ -13,7 +13,7 @@ public class BMIDataSuplier {
                     Arguments.of( 1.85, 95, "Overweight"),
                     Arguments.of( 1.85, 78,"Normal (healthy weight)"),
                     Arguments.of( 1.85,61, "Underweight" ),
-                    Arguments.of( -1, 0, "Very severely underweight"));
+                    Arguments.of( 1, 10, "Very severely underweight"));
 
                         }
     }
