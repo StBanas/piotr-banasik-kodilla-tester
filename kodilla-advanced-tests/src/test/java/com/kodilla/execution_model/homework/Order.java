@@ -4,9 +4,9 @@ import java.time.LocalDate;
 
 public class Order {
 
-    double value;
-    LocalDate date;
-    String login;
+    private double value;
+    private LocalDate date;
+    private String login;
 
     public Order(double value, LocalDate date, String login) {
         this.value = value;

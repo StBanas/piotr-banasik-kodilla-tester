@@ -19,9 +19,9 @@ public class Shop {
         this.orders.add(order);
     }
 
-    public List<Order> getOrderByDate(LocalDate date) {
+    public List<Order> getOrderFrom2Years(LocalDate day) {
         List<Order> dateOrders = getOrders().stream()
-                .filter(o -> o.getDate().isBefore(date.minus(Period.ofYears(2))))
+                .filter(o -> o.getDate().isBefore(day.minus(Period.ofYears(2))))
                 .collect(Collectors.toList());
         return dateOrders;
     }
@@ -31,22 +31,24 @@ public class Shop {
 //        if (first.getValue() > last.getValue()) {
 //            double firstTemp = last.getValue();
 //        }
-
-        for (int i = getOrders().indexOf(first); i < getOrders().indexOf(last); i++) {
-            List<Order> listOrders = new ArrayList<>();
-            listOrders.add(getOrders().get(i));
-            return listOrders;
-        }
-        return null;
-    }
 //
-//        List<Order> minMaxOrders = getOrders()
-//                .stream()
-//                .mapToDouble(o -> o.getValue())
-//                .filter(o -> (o > first.getValue()) && (o < last.getValue()))
-//                .collect(Collectors.toList());
-//        return minMaxOrders;
+//        for (int i = getOrders().indexOf(first); i < getOrders().indexOf(last); i++) {
+//            List<Order> listOrders = new ArrayList<>();
+//            listOrders.add(getOrders().get(i));
+//            return listOrders;
+//        }
+//        return null;
 //    }
+
+        List<Order> listOrders = new ArrayList<>();
+        for (Order o : getOrders()) {
+            double value = o.getValue();
+            if ((value > first.getValue()) || (value < last.getValue())) {
+                listOrders.add(o);
+            }
+        }
+        return listOrders;
+    }
 
 
     public double getSumOfAllOrders() {
