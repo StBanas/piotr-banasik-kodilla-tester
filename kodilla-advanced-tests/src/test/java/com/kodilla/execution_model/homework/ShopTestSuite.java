@@ -71,7 +71,6 @@ public class ShopTestSuite {
     public void getSumOfOrderValues() {
         //when
         double expected = shop.getSumOfAllOrders();
-
         double sum = 0;
         for (Order order: shop.getOrders()) {
             sum = sum + order.getValue();
