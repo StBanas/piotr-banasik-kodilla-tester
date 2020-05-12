@@ -6,4 +6,5 @@ public interface NotificationService {
 
     void fail(String address);
 
+
 }

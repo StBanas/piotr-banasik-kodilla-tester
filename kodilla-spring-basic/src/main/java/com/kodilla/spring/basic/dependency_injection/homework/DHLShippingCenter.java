@@ -1,6 +1,6 @@
 package com.kodilla.spring.basic.dependency_injection.homework;
 
-public class DHLShippingCenter implements DeliveryService, NotificationService{
+public class DHLShippingCenter implements DeliveryService{
 
     @Override
     public boolean deliverPackage(String address, double weight) {
@@ -10,16 +10,5 @@ public class DHLShippingCenter implements DeliveryService, NotificationService{
         }
         System.out.println("Delivering in progress...");
         return true;
-    }
-
-    @Override
-    public void success(String address) {
-        System.out.println("Package delivered to: " + address);
-    }
-
-    @Override
-    public void fail(String address) {
-        System.out.println("Package not delivered to: " + address);
-
     }
 }
