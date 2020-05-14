@@ -4,6 +4,7 @@ import org.springframework.stereotype.Component;
 
 @Component
 public class ShippingCenter {
+
     private DHLDeliveryService deliveryService;
     private DHLNotificationService notificationService;
 

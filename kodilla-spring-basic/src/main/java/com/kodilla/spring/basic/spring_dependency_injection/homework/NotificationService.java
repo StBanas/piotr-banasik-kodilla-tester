@@ -5,5 +5,4 @@ public interface NotificationService {
     public String success(String address);
 
     public String fail(String address);
-
 }
