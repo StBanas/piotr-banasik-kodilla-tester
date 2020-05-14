@@ -11,7 +11,7 @@ public class BMITestSuite {
     @MethodSource(value = "com.kodilla.paramertized_tests.homework.BMIDataSuplier#provideDataForTestingBMI")
     public void shouldCalculateBMIwithCorrectData(double height, double weight, String expected ) {
 
-       //given 
+       //given
             Person person = new Person(height, weight);
 
         //when
