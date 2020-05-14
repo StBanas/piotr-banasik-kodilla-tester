@@ -2,25 +2,19 @@ package com.kodilla.spring.basic.spring_dependency_injection.homework;
 
 import org.springframework.stereotype.Component;
 
-import javax.annotation.Resource;
-
 @Component
 public class ShippingCenter {
+    private DHLDeliveryService deliveryService;
+    private DHLNotificationService notificationService;
 
-    @Resource(name = "notificationService")
-    private NotificationService notificationService;
-
-    @Resource(name = "deliveryService")
-    private DeliveryService deliveryService;
-
-//    public ShippingCenter(DeliveryService deliveryService, NotificationService notificationService) {
-//        this.deliveryService = deliveryService;
-//        this.notificationService = notificationService;
-//    }
+    public ShippingCenter(DHLDeliveryService deliveryService, DHLNotificationService notificationService) {
+        this.deliveryService = deliveryService;
+        this.notificationService = notificationService;
+    }
 
     public String sendPackage(String address, double weight) {
         if (deliveryService.deliverPackage(address, weight)) {
-            return notificationService.success(address);
+            return this.notificationService.success(address);
         }
         return notificationService.fail(address);
     }
