@@ -4,9 +4,9 @@ import java.time.LocalTime;
 public class Cabrio implements Car {
 
     @Override
-    public boolean hasHeadlightsTurnedOn() {
+    public boolean hasHeadlightsTurnedOn(LocalTime hour) {
 
-        LocalTime hour = LocalTime.now();
+    hour = LocalTime.now();
 
         if (hour.isAfter(LocalTime.of(20, 00)) || (hour.isBefore(LocalTime.of(6, 00)))) {
             return true;

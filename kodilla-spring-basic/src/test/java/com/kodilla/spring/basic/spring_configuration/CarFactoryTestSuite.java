@@ -8,6 +8,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
+import java.time.LocalTime;
 import java.util.Arrays;
 import java.util.List;
 
@@ -28,12 +29,13 @@ public class CarFactoryTestSuite {
     public void shouldSedanHasLightsTurnedOn() {
         //given
         ApplicationContext context = new AnnotationConfigApplicationContext("com.kodilla.spring");
+//        Sedan sedan = context.getBean("Sedan", Sedan.class);
         Sedan sedan = (Sedan) context.getBean("createSedan");
         //when
         String car = sedan.getCarType();
-        boolean lights = sedan.hasHeadlightsTurnedOn();
+        boolean lights = sedan.hasHeadlightsTurnedOn(LocalTime.of (13,00));
         //then
-        Assertions.assertFalse(lights); // TODO between 8.00pm and 6.00am assertTrue;
+        Assertions.assertFalse(lights);
     }
 
     @Test
@@ -48,26 +50,13 @@ public class CarFactoryTestSuite {
         Assertions.assertTrue(possibleCars.contains(carType));
     }
     @Test
-    public void shouldHasLightsOn () {
+    public void shouldRandomCarHasLightsOn () {
         //given
         ApplicationContext context = new AnnotationConfigApplicationContext("com.kodilla.spring");
         Car car = (Car) context.getBean("createCar");
         //when
         String carType = car.getCarType();
-        boolean lights = car.hasHeadlightsTurnedOn();
-        System.out.println(lights);
-        //then
-        Assertions.assertFalse(lights);
-    }
-
-    @Test
-    public void shouldHasLightsOff () {
-        //given
-        ApplicationContext context = new AnnotationConfigApplicationContext("com.kodilla.spring");
-        Car car = (Car) context.getBean("createCar");
-        //when
-        String carType = car.getCarType();
-        boolean lights = car.hasHeadlightsTurnedOn();
+        boolean lights = car.hasHeadlightsTurnedOn(LocalTime.of(8,00));
         //then
         Assertions.assertFalse(lights);
     }
