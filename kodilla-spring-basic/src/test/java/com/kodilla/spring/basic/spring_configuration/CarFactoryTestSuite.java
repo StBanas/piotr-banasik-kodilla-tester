@@ -60,15 +60,15 @@ public class CarFactoryTestSuite {
         Assertions.assertFalse(lights);
     }
 
-//    @Test
-//    public void shouldHasLightsOff () {
-//        //given
-//        ApplicationContext context = new AnnotationConfigApplicationContext("com.kodilla.spring");
-//        Car car = (Car) context.getBean("createCar");
-//        //when
-//        String carType = car.getCarType();
-//        boolean lights = car.hasHeadlightsTurnedOn();
-//        //then
-//        Assertions.assertTrue(lights);
-//    }
+    @Test
+    public void shouldHasLightsOff () {
+        //given
+        ApplicationContext context = new AnnotationConfigApplicationContext("com.kodilla.spring");
+        Car car = (Car) context.getBean("createCar");
+        //when
+        String carType = car.getCarType();
+        boolean lights = car.hasHeadlightsTurnedOn();
+        //then
+        Assertions.assertFalse(lights);
+    }
 }

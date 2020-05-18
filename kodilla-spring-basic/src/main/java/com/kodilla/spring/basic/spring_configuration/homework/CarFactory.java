@@ -16,21 +16,30 @@ public class CarFactory {
     @Bean
     public Car createCar() {
         Car car;
-        Random generator = new Random();
-        int seazon = generator.nextInt(4);
+        String[] seasons = {"Winter", "Summer", "Spring", "Autumn", "winter", "summer", "spring", "autumn"};
+        Random r = new Random();
+        int choice = r.nextInt(8);
+        String season = seasons[choice];
 
-        if (seazon == 0 || seazon == 2) {
+//        Random generator = new Random();
+//        int seazon = generator.nextInt(4);
+//        if (seazon == 0 || seazon == 2) {
+//            car = new Sedan();
+//        } else if (seazon == 1) {
+//            car = new Cabrio();
+//        } else {
+//            car = new SUV();
+//        }
+//        return car;
+//    }
+        if (choice == 2 || choice == 3 || choice == 6 || choice == 7) {
             car = new Sedan();
-        } else if (seazon == 1) {
+        } else if (choice == 1 || choice == 5) {
             car = new Cabrio();
         } else {
             car = new SUV();
         }
         return car;
     }
-
-
-
-
 }
 

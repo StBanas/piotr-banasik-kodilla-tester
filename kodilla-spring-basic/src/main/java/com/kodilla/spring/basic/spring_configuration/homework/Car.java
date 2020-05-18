@@ -5,5 +5,4 @@ public interface Car {
     public boolean hasHeadlightsTurnedOn ();
 
     public String getCarType();
-
 }
