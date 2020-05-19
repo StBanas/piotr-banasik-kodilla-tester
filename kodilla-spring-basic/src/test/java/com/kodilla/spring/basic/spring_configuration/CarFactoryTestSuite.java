@@ -19,7 +19,7 @@ public class CarFactoryTestSuite {
     public void testSedanCreated() {
         //given
         ApplicationContext context = new AnnotationConfigApplicationContext("com.kodilla.spring");
-        Sedan sedan = (Sedan) context.getBean("createSedan");
+        Sedan sedan = (Sedan) context.getBean("createSedan",Sedan.class);
         //when
         String car = sedan.getCarType();
         //then
@@ -29,8 +29,7 @@ public class CarFactoryTestSuite {
     public void shouldSedanHasLightsTurnedOn() {
         //given
         ApplicationContext context = new AnnotationConfigApplicationContext("com.kodilla.spring");
-//        Sedan sedan = context.getBean("Sedan", Sedan.class);
-        Sedan sedan = (Sedan) context.getBean("createSedan");
+        Sedan sedan = context.getBean("createSedan", Sedan.class);
         //when
         String car = sedan.getCarType();
         boolean lights = sedan.hasHeadlightsTurnedOn(LocalTime.of (13,00));
@@ -42,7 +41,7 @@ public class CarFactoryTestSuite {
     public void ShouldHasRandomCarBeenCreated() {
         //given
         ApplicationContext context = new AnnotationConfigApplicationContext("com.kodilla.spring");
-        Car car = (Car) context.getBean("createCar");
+        Car car = context.getBean("createCar", Car.class);
         //when
         String carType = car.getCarType();
         //then
@@ -53,7 +52,7 @@ public class CarFactoryTestSuite {
     public void shouldRandomCarHasLightsOn () {
         //given
         ApplicationContext context = new AnnotationConfigApplicationContext("com.kodilla.spring");
-        Car car = (Car) context.getBean("createCar");
+        Car car = context.getBean("createCar",Car.class);
         //when
         String carType = car.getCarType();
         boolean lights = car.hasHeadlightsTurnedOn(LocalTime.of(8,00));
