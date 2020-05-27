@@ -19,7 +19,7 @@ public class BookController {
     public List<BookDto> getBooks() {return bookService.getBooks();}
 
     @PostMapping
-    public void addBook(@RequestBody BookDto bookDto) {
+    public void addBook(BookDto bookDto) {
         bookService.addBook(bookDto);
     }
 
