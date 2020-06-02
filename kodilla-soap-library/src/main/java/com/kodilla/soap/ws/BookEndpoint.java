@@ -1,8 +1,8 @@
 package com.kodilla.soap.ws;
 
 import com.kodilla.soap.library.Books;
-import localhost._8080.books.soap.GetBookRequest;
-import localhost._8080.books.soap.GetBookResponse;
+import com.kodilla.courses.soap.GetBookRequest;
+import com.kodilla.courses.soap.GetBookResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.ws.server.endpoint.annotation.Endpoint;
 import org.springframework.ws.server.endpoint.annotation.PayloadRoot;
@@ -11,7 +11,7 @@ import org.springframework.ws.server.endpoint.annotation.ResponsePayload;
 
 @Endpoint
 public class BookEndpoint {
-    private static final String NAMESPACE_URI = "http://localhost:8080/books/soap";
+    private static final String NAMESPACE_URI = "http://kodilla.com/courses/soap";
 
     private Books booksRepository;
 
@@ -22,7 +22,7 @@ public class BookEndpoint {
 
     @PayloadRoot(namespace = NAMESPACE_URI, localPart = "getBookRequest")
     @ResponsePayload
-    public GetBookResponse getCourse(@RequestPayload GetBookRequest request) {
+    public GetBookResponse getBook(@RequestPayload GetBookRequest request) {
         GetBookResponse response = new GetBookResponse();
         response.setBook(booksRepository.findBook(request.getISBN()));
 

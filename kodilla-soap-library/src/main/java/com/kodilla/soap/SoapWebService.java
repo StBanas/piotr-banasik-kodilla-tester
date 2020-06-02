@@ -4,8 +4,8 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class SoapWebservice {
+public class SoapWebService {
     public static void main(String[] args) {
-        SpringApplication.run(SoapWebservice.class, args);
+        SpringApplication.run(SoapWebService.class, args);
     }
 }

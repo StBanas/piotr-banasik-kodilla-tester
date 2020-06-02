@@ -28,7 +28,7 @@ public class WebServiceConfig extends WsConfigurerAdapter {
         DefaultWsdl11Definition wsdl11Definition = new DefaultWsdl11Definition();
         wsdl11Definition.setPortTypeName("BooksPort");
         wsdl11Definition.setLocationUri("/ws");
-        wsdl11Definition.setTargetNamespace("http://localhost:8080/books/soap");
+        wsdl11Definition.setTargetNamespace("http://kodilla.com/courses/soap");
         wsdl11Definition.setSchema(booksSchema); // () would do
         return wsdl11Definition;
     }

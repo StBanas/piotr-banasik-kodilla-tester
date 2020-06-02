@@ -1,5 +1,5 @@
-<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://localhost:8080/books/soap"
-           targetNamespace="http://localhost:8080/books/soap" elementFormDefault="qualified">
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://kodilla.com/courses/soap"
+           targetNamespace="http://kodilla.com/courses/soap" elementFormDefault="qualified">
 
     <xs:element name="getBookRequest">
         <xs:complexType>

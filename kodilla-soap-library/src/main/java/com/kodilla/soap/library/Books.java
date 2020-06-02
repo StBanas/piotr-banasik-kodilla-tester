@@ -1,7 +1,7 @@
 package com.kodilla.soap.library;
 
-import localhost._8080.books.soap.Book;
-import localhost._8080.books.soap.Technology;
+import com.kodilla.courses.soap.Book;
+import com.kodilla.courses.soap.Technology;
 import org.springframework.stereotype.Component;
 import org.springframework.util.Assert;
 

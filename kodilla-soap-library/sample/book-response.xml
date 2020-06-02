@@ -1,0 +1,14 @@
+<SOAP-ENV:Envelope xmlns:SOAP-ENV="http://schemas.xmlsoap.org/soap/envelope/">
+    <SOAP-ENV:Header/>
+    <SOAP-ENV:Body>
+        <ns2:getBookResponse xmlns:ns2="http://kodilla.com/courses/soap">
+            <ns2:book>
+                <ns2:ISBN>1000</ns2:ISBN>
+                <ns2:title>Robot</ns2:title>
+                <ns2:author>Snerg-Wisniewski</ns2:author>
+                <ns2:PublicationYear>1978</ns2:PublicationYear>
+                <ns2:literatureGener>SCI-FI</ns2:literatureGener>
+            </ns2:book>
+        </ns2:getBookResponse>
+    </SOAP-ENV:Body>
+</SOAP-ENV:Envelope>
