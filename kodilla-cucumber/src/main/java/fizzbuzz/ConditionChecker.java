@@ -2,7 +2,7 @@ package fizzbuzz;
 
 public class ConditionChecker {
 
-    public String checkIfZero(int number) {
+    public String checkWhatName(int number) {
         if (number % 3 == 0 && number % 5 == 0) {
             return "FizzBuzz";
         } else if (number % 3 == 0) {

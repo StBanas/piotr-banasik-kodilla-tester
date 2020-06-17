@@ -4,24 +4,40 @@ import io.cucumber.java8.En;
 import org.junit.Assert;
 
 public class FizzBuzzSteps implements En {
+
     private int number;
-    private String name;
+    private String result;
 
     public FizzBuzzSteps() {
-        Given ("the {int} is positive Integer", (Integer int1) -> {
-           this.number=105;
+
+        Given("number is one houndred and five", () -> {
+            this.number = 105;
         });
 
-        When("I ask what is the result of division of {int} by any value", (Integer int1) -> {
+        Given("number is one", () -> {
+            this.number = 1;
+        });
+
+        Given("number is fourty", () -> {
+            this.number = 40;
+        });
+
+        Given("number is five", () -> {
+            this.number = 5;
+        });
+
+        Given("number is fiveteen", () -> {
+            this.number = 15;
+        });
+
+        When("I ask if the remainder of division is {int}", (Integer number) -> {
             ConditionChecker conditionChecker = new ConditionChecker();
-            this.name = conditionChecker.checkIfZero(int1);
+            this.result = conditionChecker.checkWhatName(this.number);
         });
 
-        Then("I should be told name", () -> {
-
-            Assert.assertEquals(name, this.name);
+        Then("I should be told {string}", (String string) -> {
+            Assert.assertEquals( string, this.result );
+            System.out.println( this.number + "   " + result + "  " + string );
         });
-
     }
-
 }

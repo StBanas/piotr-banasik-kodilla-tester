@@ -4,7 +4,8 @@ import org.junit.runner.RunWith;
 
 @RunWith(Cucumber.class)
 @CucumberOptions(
-        features = {"src/test/resources/fizzbuzz"}
+        features = {"src/test/resources/fizzbuzz"},
+        plugin = {"pretty"}
 )
 public class FizzRunner {
 
