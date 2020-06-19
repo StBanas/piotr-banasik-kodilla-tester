@@ -17,4 +17,8 @@ public class Wallet {
         return balance;
     }
 
+    public void debit(int money) {
+        this.balance -= money;
+    }
+
 }

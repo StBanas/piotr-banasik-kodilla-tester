@@ -11,7 +11,7 @@ public class WalletSteps implements En {
     public WalletSteps() {
 
         Given("I have deposited $200 in my wallet", () -> {
-            Wallet wallet = new Wallet();
+//            Wallet wallet = new Wallet();
             wallet.deposit(200);
             Assert.assertEquals("Incorrect wallet balance",200,wallet.getBalance());
         });
@@ -20,32 +20,49 @@ public class WalletSteps implements En {
             Cashier cashier = new Cashier(cashSlot);
             cashier.withdraw(wallet, 30);
         });
+
         Then("$30 should be dispensed", () -> {
            Assert.assertEquals(30, cashSlot.getContents());
         });
 
-        When("I request $200", () -> {
+        Then("the balance of my wallet should be $170", () -> {
+            Assert.assertEquals("Incorrect wallet balance", 170, wallet.getBalance());
+        });
+
+        Given("my account has been credited with $100", () -> {
+            wallet.deposit(100);
+            Assert.assertEquals("Incorrect wallet balance",100,wallet.getBalance());
+        });
+
+        When("I check my balance", () -> {
+           Cashier cashier = new Cashier(cashSlot);
+            cashier.withdraw(wallet, 0);
+        });
+
+        Then("I should see that my balance is $100", () -> {
+            Assert.assertEquals(100, wallet.getBalance());
+        });
+
+        Given("my wallet has been credited with $100", () -> {
+            wallet.deposit(100);
+            Assert.assertEquals("Incorrect wallet balance",100,wallet.getBalance());
+        });
+
+        When("I withdraw $200", () -> {
             Cashier cashier = new Cashier(cashSlot);
             cashier.withdraw(wallet, 200);
         });
-        Then("$200 should be dispensed", () -> {
-            Assert.assertEquals(200, cashSlot.getContents());
+
+        Then("nothing should be dispensed", () -> {
+            cashSlot.dispense(0);
         });
 
-        When("I request $300", () -> {
-            Cashier cashier = new Cashier(cashSlot);
-            cashier.withdraw(wallet, 300);
-        });
-        Then("$300 should be dispensed", () -> {
-            Assert.assertEquals(300, cashSlot.getContents());
+        Then("I should be told that I have insufficient funds in my account", () -> {
+
+            System.out.println("Sorry. Incorrect amount or too litle money on account");
         });
 
-        When("I request $0", () -> {
-            Cashier cashier = new Cashier(cashSlot);
-            cashier.withdraw(wallet, 0);
-        });
-        Then("$0 should be dispensed", () -> {
-            Assert.assertEquals(0, cashSlot.getContents());
-        });
     }
 }
+
+
